@@ -1,0 +1,392 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5D4742AC153CB54E00BF91EF /* HVMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D4742AB153CB54E00BF91EF /* HVMasterViewController.xib */; };
+		5DB083DB18F3231800702B79 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB083DA18F3231800702B79 /* SystemConfiguration.framework */; };
+		5DB2E6E218D3811D0030972D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB2E6E118D3811D0030972D /* MobileCoreServices.framework */; };
+		5DB54DD0153C765700E1C6BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB54DCF153C765700E1C6BE /* UIKit.framework */; };
+		5DB54DD2153C765700E1C6BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB54DD1153C765700E1C6BE /* Foundation.framework */; };
+		5DB54DD4153C765700E1C6BE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB54DD3153C765700E1C6BE /* CoreGraphics.framework */; };
+		5DB54DDC153C765700E1C6BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB54DDB153C765700E1C6BE /* main.m */; };
+		5DB54DE0153C765700E1C6BE /* HVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB54DDF153C765700E1C6BE /* HVAppDelegate.m */; };
+		5DB54DE3153C765700E1C6BE /* HVMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB54DE2153C765700E1C6BE /* HVMasterViewController.m */; };
+		5DB54E1A153C85A500E1C6BE /* ClientSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5DB54E19153C85A500E1C6BE /* ClientSettings.xml */; };
+		5DFD4832159B72E30003EA49 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DFD4831159B72E30003EA49 /* Security.framework */; };
+		D99669C31BC2AF920088650E /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D99669C21BC2AF920088650E /* libxml2.2.tbd */; };
+		D99669CE1BC3BAC80088650E /* libHVLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D99669C91BC2C25B0088650E /* libHVLib.a */; };
+		D9C61FA01BBD1F420025A79A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9C61F9F1BBD1F420025A79A /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D99669C81BC2C25B0088650E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D99669C41BC2C25B0088650E /* HVLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5D5299AC14DCB3A700D2636E;
+			remoteInfo = HVLib;
+		};
+		D99669CA1BC2C2670088650E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D99669C41BC2C25B0088650E /* HVLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D5299AB14DCB3A700D2636E;
+			remoteInfo = HVLib;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5D4742AB153CB54E00BF91EF /* HVMasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HVMasterViewController.xib; sourceTree = "<group>"; };
+		5DB083DA18F3231800702B79 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5DB2E6E118D3811D0030972D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		5DB54DCB153C765700E1C6BE /* HelloCHBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloCHBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DB54DCF153C765700E1C6BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5DB54DD1153C765700E1C6BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5DB54DD3153C765700E1C6BE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5DB54DD7153C765700E1C6BE /* HelloHealthVault-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HelloHealthVault-Info.plist"; sourceTree = "<group>"; };
+		5DB54DDB153C765700E1C6BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5DB54DDD153C765700E1C6BE /* HelloCHBase-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloCHBase-Prefix.pch"; sourceTree = "<group>"; };
+		5DB54DDE153C765700E1C6BE /* HVAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HVAppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		5DB54DDF153C765700E1C6BE /* HVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HVAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		5DB54DE1153C765700E1C6BE /* HVMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HVMasterViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		5DB54DE2153C765700E1C6BE /* HVMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HVMasterViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		5DB54E19153C85A500E1C6BE /* ClientSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ClientSettings.xml; sourceTree = "<group>"; };
+		5DFD4831159B72E30003EA49 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D99669C21BC2AF920088650E /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		D99669C41BC2C25B0088650E /* HVLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HVLib.xcodeproj; path = ../../HVLib.xcodeproj; sourceTree = "<group>"; };
+		D9C61F9F1BBD1F420025A79A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5DB54DC8153C765700E1C6BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D99669CE1BC3BAC80088650E /* libHVLib.a in Frameworks */,
+				D99669C31BC2AF920088650E /* libxml2.2.tbd in Frameworks */,
+				5DB083DB18F3231800702B79 /* SystemConfiguration.framework in Frameworks */,
+				5DB2E6E218D3811D0030972D /* MobileCoreServices.framework in Frameworks */,
+				5DFD4832159B72E30003EA49 /* Security.framework in Frameworks */,
+				5DB54DD0153C765700E1C6BE /* UIKit.framework in Frameworks */,
+				5DB54DD2153C765700E1C6BE /* Foundation.framework in Frameworks */,
+				5DB54DD4153C765700E1C6BE /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5DB54DC0153C765700E1C6BE = {
+			isa = PBXGroup;
+			children = (
+				D9C61F9F1BBD1F420025A79A /* Default-568h@2x.png */,
+				5DB54DD5153C765700E1C6BE /* HelloHealthVault */,
+				5DB54DCE153C765700E1C6BE /* Frameworks */,
+				5DB54DCC153C765700E1C6BE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5DB54DCC153C765700E1C6BE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5DB54DCB153C765700E1C6BE /* HelloCHBase.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5DB54DCE153C765700E1C6BE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D99669C41BC2C25B0088650E /* HVLib.xcodeproj */,
+				5DFD4831159B72E30003EA49 /* Security.framework */,
+				D99669C21BC2AF920088650E /* libxml2.2.tbd */,
+				5DB083DA18F3231800702B79 /* SystemConfiguration.framework */,
+				5DB2E6E118D3811D0030972D /* MobileCoreServices.framework */,
+				5DB54DCF153C765700E1C6BE /* UIKit.framework */,
+				5DB54DD1153C765700E1C6BE /* Foundation.framework */,
+				5DB54DD3153C765700E1C6BE /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5DB54DD5153C765700E1C6BE /* HelloHealthVault */ = {
+			isa = PBXGroup;
+			children = (
+				5DB54DDE153C765700E1C6BE /* HVAppDelegate.h */,
+				5DB54DDF153C765700E1C6BE /* HVAppDelegate.m */,
+				5DB54DE1153C765700E1C6BE /* HVMasterViewController.h */,
+				5DB54DE2153C765700E1C6BE /* HVMasterViewController.m */,
+				5D4742AB153CB54E00BF91EF /* HVMasterViewController.xib */,
+				5DB54E19153C85A500E1C6BE /* ClientSettings.xml */,
+				5DB54DD6153C765700E1C6BE /* Supporting Files */,
+			);
+			path = HelloHealthVault;
+			sourceTree = "<group>";
+		};
+		5DB54DD6153C765700E1C6BE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5DB54DD7153C765700E1C6BE /* HelloHealthVault-Info.plist */,
+				5DB54DDB153C765700E1C6BE /* main.m */,
+				5DB54DDD153C765700E1C6BE /* HelloCHBase-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D99669C51BC2C25B0088650E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D99669C91BC2C25B0088650E /* libHVLib.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5DB54DCA153C765700E1C6BE /* HelloCHBase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DB54DEF153C765700E1C6BE /* Build configuration list for PBXNativeTarget "HelloCHBase" */;
+			buildPhases = (
+				5DB54DC7153C765700E1C6BE /* Sources */,
+				5DB54DC8153C765700E1C6BE /* Frameworks */,
+				5DB54DC9153C765700E1C6BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D99669CB1BC2C2670088650E /* PBXTargetDependency */,
+			);
+			name = HelloCHBase;
+			productName = HelloHealthVault;
+			productReference = 5DB54DCB153C765700E1C6BE /* HelloCHBase.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5DB54DC2153C765700E1C6BE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = HV;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Microsoft Corporation";
+				TargetAttributes = {
+					5DB54DCA153C765700E1C6BE = {
+						DevelopmentTeam = 96U439KRCX;
+					};
+				};
+			};
+			buildConfigurationList = 5DB54DC5153C765700E1C6BE /* Build configuration list for PBXProject "HelloCHBase" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5DB54DC0153C765700E1C6BE;
+			productRefGroup = 5DB54DCC153C765700E1C6BE /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D99669C51BC2C25B0088650E /* Products */;
+					ProjectRef = D99669C41BC2C25B0088650E /* HVLib.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				5DB54DCA153C765700E1C6BE /* HelloCHBase */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D99669C91BC2C25B0088650E /* libHVLib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libHVLib.a;
+			remoteRef = D99669C81BC2C25B0088650E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5DB54DC9153C765700E1C6BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DB54E1A153C85A500E1C6BE /* ClientSettings.xml in Resources */,
+				5D4742AC153CB54E00BF91EF /* HVMasterViewController.xib in Resources */,
+				D9C61FA01BBD1F420025A79A /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5DB54DC7153C765700E1C6BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DB54DDC153C765700E1C6BE /* main.m in Sources */,
+				5DB54DE0153C765700E1C6BE /* HVAppDelegate.m in Sources */,
+				5DB54DE3153C765700E1C6BE /* HVMasterViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D99669CB1BC2C2670088650E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HVLib;
+			targetProxy = D99669CA1BC2C2670088650E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5DB54DED153C765700E1C6BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		5DB54DEE153C765700E1C6BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5DB54DF0153C765700E1C6BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloHealthVault/HelloCHBase-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2/**";
+				INFOPLIST_FILE = "HelloHealthVault/HelloHealthVault-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chbase.HelloHealthVault;
+				PRODUCT_NAME = HelloCHBase;
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "../../HVLib/**";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5DB54DF1153C765700E1C6BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloHealthVault/HelloCHBase-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2/**";
+				INFOPLIST_FILE = "HelloHealthVault/HelloHealthVault-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chbase.HelloHealthVault;
+				PRODUCT_NAME = HelloCHBase;
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "../../HVLib/**";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5DB54DC5153C765700E1C6BE /* Build configuration list for PBXProject "HelloCHBase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DB54DED153C765700E1C6BE /* Debug */,
+				5DB54DEE153C765700E1C6BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5DB54DEF153C765700E1C6BE /* Build configuration list for PBXNativeTarget "HelloCHBase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DB54DF0153C765700E1C6BE /* Debug */,
+				5DB54DF1153C765700E1C6BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5DB54DC2153C765700E1C6BE /* Project object */;
+}

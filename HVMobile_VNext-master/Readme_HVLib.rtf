@@ -1,0 +1,273 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Tahoma;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 Menlo-Bold;\f4\fnil\fcharset0 LucidaGrande;\f5\fnil\fcharset0 Consolas;
+}
+{\colortbl;\red255\green255\blue255;\red255\green250\blue131;\red83\green83\blue83;\red0\green116\blue0;
+\red100\green56\blue32;\red196\green26\blue22;\red170\green13\blue145;\red14\green14\blue255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid302\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid402\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid502\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid503\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listname ;}\listid6}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}}
+\margl1440\margr1440\vieww38200\viewh18880\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\b\fs24 \cf0 [
+\fs28 Oct 11, 2015]\
+
+\b0\fs24 \
+
+\b\fs36 \cb2 NOTE:\
+
+\b0\fs24 \cb1 \
+The following source code is derived from https://github.com/microsoft-hsg/HVMobile_VNext 
+\fs18 (
+\fs24 \cf3 \expnd0\expndtw0\kerning0
+V2 of HVMobile Library. This library is used for the HealthVault for iPhone app.)\cf0 \kerning1\expnd0\expndtw0 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f1\b\fs36 \cf0 Assumptions\
+
+\fs28 \
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
+\ls1\ilvl0\cf0 {\listtext	\'95	}
+\b0 You are familiar with core CHBase concepts
+\b \
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
+\ls2\ilvl0
+\b0 \cf0 {\listtext	\'95	}You know how to write iOS apps \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b\fs36 \cf0 About HVLib\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0\fs28 \cf0 \
+HVLib is an iOS library you use to build applications for 
+\b CHBase
+\b0 .  HVLib was developed and used for creating iPhone app against.\
+\
+HVLib is a 
+\b static library
+\b0 . It is available under the Apache 2.0 license. \
+\
+HVLib introduces a rich new HealthVault iOS client programming model.  It includes built in serialization of most HealthVault data types, and built in support for HealthVault methods. 
+\b You no longer need to manually parse or create Xml
+\b0 . \
+\
+HealthVault data types are automatically serialized/deserialized from their native XML into Objective-C objects. These objects include programming model to assist with data manipulation. HVLib also supplies support for local HealthVault data storage, and in the future, synchronization. \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b\fs36 \cf0 Sample Code\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0\fs28 \cf0 \
+See HVLib/Samples/HelloHealthVault for sample code. \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 HelloCHBaseVault
+\b0 \
+* Samples/
+\b HelloCHBase.xcworkspace
+\b0 \
+\
+The HelloHealthVault sample demonstrates how to add, remove, update and query Health information to and from HealthVault. \
+To run the sample, make sure you load the 
+\b WORKSPACE
+\b0  - so that dependencies and libraries are correctly pulled in. \
+\
+HelloHealthVault uses a pre-defined HealthVault application.\
+You can create your own applications using the CHBase  {\field{\*\fldinst{HYPERLINK "https://swedenaccv2.dev.grcdemo.com"}}{\fldrslt Application Configuration Center}}.\
+\
+\
+
+\b\fs36 Using HVLib with your Project:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0\fs28 \cf0 \
+You should link HVLib as a 
+\b static library
+\b0  into your project.\
+ \
+1. Make sure you are using Xcode workspaces. If not, create a new workspace and add your project to it. \
+2. Add HVLib.xcodeproj to your Workspace\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 iOS Framework Dependencies\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
+\ls3\ilvl0
+\b0 \cf0 {\listtext	\'95	}
+\b Add libxml
+\b0 \
+{\listtext	\'95	}
+\b Security.Framework\
+\ls3\ilvl0
+\b0 {\listtext	\'95	}
+\b MobileCoreServices.Framework\
+\ls3\ilvl0
+\b0 {\listtext	\'95	}
+\b SystemConfiguration.Framework
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Header Files\
+\pard\tx640\pardeftab640\pardirnatural
+
+\f2\b0\fs26 \cf4 \CocoaLigature0 //\cf0 \
+\cf4 // Include Mobile CHBase Library\cf0 \
+\cf4 //\cf0 \
+
+\f3\b \cf5 #import \cf6 "HVLib.h"
+\f2\b0 \
+
+\f1\fs28 \cf0 \CocoaLigature1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Update Build Targets\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \
+Make the following changes to your project Target: \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \
+Build Phases\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
+\ls4\ilvl0
+\b0 \cf0 {\listtext	\'95	}
+\b Link Binary With Libraries
+\b0 \
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural
+\ls4\ilvl1\cf0 {\listtext	
+\f4 \uc0\u8259 
+\f1 	}Add 
+\b libHVLib.a  
+\b0 [This is the CHBase Library. You should see it listed under "Workspace"]\
+{\listtext	
+\f4 \uc0\u8259 
+\f1 	}\
+{\listtext	
+\f4 \uc0\u8259 
+\f1 	}
+\b Security.Framework\
+{\listtext	
+\f4 \uc0\u8259 
+\f1 	}SystemConfiguration.Framework\
+\ls4\ilvl1
+\b0 {\listtext	
+\f4 \uc0\u8259 
+\f1 	}
+\b MobileCoreServices.Framework
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Build Settings\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
+\ls5\ilvl0\cf0 {\listtext	\'95	}
+\b Linking
+\b0 \
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural
+\ls5\ilvl1\cf0 {\listtext	
+\f4 \uc0\u8259 
+\f1 	}
+\b Other Linker Flags
+\b0  : Add the following:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 	        			
+\b -ObjC\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
+\ls6\ilvl0
+\b0 \cf0 {\listtext	\'95	}
+\b Search Paths
+\b0 \
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural
+\ls6\ilvl1\cf0 {\listtext	
+\f4 \uc0\u8259 
+\f1 	}
+\b Header Search Paths
+\b0 :  Add the following:\
+\pard\tx1660\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-2160\pardirnatural
+\ls6\ilvl2\cf0 {\listtext	
+\f4 \uc0\u8259 
+\f1 	}$(SDK_DIR)/usr/include/libxml2/**\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural
+\ls6\ilvl1\cf0 {\listtext	
+\f4 \uc0\u8259 
+\f1 	}
+\b User Header Search Paths
+\b0 : \
+		Add Relative Path to the HVLib directory. E.g. CHBase samples use the path:\
+\pard\tx1660\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-2160\pardirnatural
+\ls6\ilvl2\cf0 {\listtext	
+\f4 \uc0\u8259 
+\f1 	}../../HVLib/**       [Note: Xcode may add the ** for you by default - i.e. search all subdirectories of the path]\
+	* OR: ../HVMobile_VNext/**\
+\
+\pard\tx1660\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-2160\pardirnatural
+\ls6\ilvl2
+\b\fs36 \cf0 ClientSettings.xml\
+\pard\tx1660\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-2160\pardirnatural
+\ls6\ilvl2
+\fs28 \cf0 \
+\pard\tx1660\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-2160\pardirnatural
+\ls6\ilvl2
+\b0 \cf0 HVLib loads settings from 
+\b ClientSettings.xml
+\b0 . Please add ClientSettings.xml to your project. \
+You can leverage the one included with the HelloCHBase sample.
+\fs36 \
+\ls6\ilvl2
+\fs28 \
+\pard\tx529\pardeftab529\pardirnatural
+
+\f2\fs22 \cf7 \CocoaLigature0 <?xml version=\cf6 "1.0"\cf7  encoding=\cf6 "utf-8"\cf7  ?>\cf0 \
+\cf7 <clientSettings>\cf0 \
+    \cf4 <!--\
+     See HVClientSettings.h or m for a list configurable settings\
+     -->\cf0 \
+    \cf4 <!--\
+     CHBase Application ID\
+     This is the app ID for the default sample Hello World application.\
+     Create your own application at {\field{\*\fldinst{HYPERLINK "http://swedenaccv2.dev.grcdemo.com"}}{\fldrslt \cf8 http://swedenaccv2.dev.grcdemo.com}}\
+     -->\cf0 \
+    \cf7 <masterAppID>\cf0 4f44350e-fa2b-49b9-b1c6-6f97a3baa331\cf7 </masterAppID>\cf0 \
+    \cf4 <!--Application name -->\cf0 \
+    \cf7 <appName>\cf0 Hello CHBase\cf7 </appName>\cf0 \
+    \cf7 <isMultiInstanceAware>\cf0 false\cf7 </isMultiInstanceAware>\cf0 \
+    \cf7 <environment>\cf0 \
+        \cf7 <name>\cf0 PPE\cf7 </name>\cf0 \
+        \cf7 <friendlyName>\cf0 CHBase Pre-Production\cf7 </friendlyName>\cf0 \
+        \cf4 <!--\
+         Url for CHBase service calls - set up for Pre-Production below\
+         -->\cf0 \
+        \cf7 <serviceUrl>\cf0 https://chbaseplatform-ppev2.dev.grcdemo.com/platform/wildcat.ashx\cf7 </serviceUrl>\cf0 \
+        \cf4 <!--\
+         CHBase Shell - used during app provisioning on the device\
+         -->\cf0 \
+        \cf7 <shellUrl>\cf0 https://chbase-ppev2.dev.grcdemo.com\cf7 </shellUrl>\cf0 \
+    \cf7 </environment>\cf0 \
+\cf7 </clientSettings>\cf0 \
+\
+\pard\tx640\pardeftab640\pardirnatural
+
+\f5\fs28 \cf0 \
+\
+}

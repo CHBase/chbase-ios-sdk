@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:/Users/rajeshckr/Projects/CHBase/HVMobile_VNext-master/Samples/HelloHealthVault/HelloCHBase.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:HVMobile_VNext-master/HVLib.xcodeproj">
+   </FileRef>
+</Workspace>
