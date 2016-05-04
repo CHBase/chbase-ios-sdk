@@ -54,6 +54,7 @@
 {
     if (m_webView)
     {
+        [m_webView setDelegate:nil];
         [m_webView stopLoading];
     }
     return TRUE;
@@ -78,7 +79,14 @@ LError:
 -(void)abort
 {
     [self stop];
-    [self.navigationController popViewControllerAnimated:TRUE];
+    
+    if(![NSThread isMainThread]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:TRUE];
+        });
+    } else {
+        [self.navigationController popViewControllerAnimated:TRUE];
+    }
 }
 
 //-----------------------
@@ -87,10 +95,10 @@ LError:
 //
 //-----------------------
 -(BOOL)webView: (UIWebView *)webView shouldStartLoadWithRequest: (NSURLRequest *)request
- navigationType: (UIWebViewNavigationType)navigationType 
+navigationType: (UIWebViewNavigationType)navigationType
 {
     [self showActivitySpinner];
- 	return YES;
+    return YES;
 }
 
 -(void)webViewDidStartLoad:(UIWebView *)webView
@@ -119,7 +127,7 @@ LError:
 {
     [super viewDidLoad];
     
-    [self createBrowser];    
+    [self createBrowser];
     [self addBackButton];
 }
 
@@ -129,10 +137,10 @@ LError:
     [self start];
 }
 
-- (void)viewWillDisappear: (BOOL)animated 
+- (void)viewWillDisappear: (BOOL)animated
 {
     [self stop];
-	[super viewWillDisappear:animated];
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidUnload
@@ -149,7 +157,7 @@ LError:
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    switch (interfaceOrientation) 
+    switch (interfaceOrientation)
     {
         case UIInterfaceOrientationLandscapeLeft:
         case UIInterfaceOrientationLandscapeRight:
@@ -181,7 +189,7 @@ LError:
     m_webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     m_webView.delegate = self;
     
-    [superView addSubview:m_webView];  
+    [superView addSubview:m_webView];
     
     return TRUE;
     
@@ -202,14 +210,14 @@ LError:
         [m_webView removeFromSuperview];
     }
     HVCLEAR(m_webView);
-
+    
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
 -(BOOL)addBackButton
 {
     self.navigationItem.hidesBackButton = TRUE;
-
+    
     NSString* buttonTitle = NSLocalizedString(@"Back", @"Back button text");
     
     UIBarButtonItem* button = [[[UIBarButtonItem alloc] initWithTitle:buttonTitle style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClicked:)] autorelease];
@@ -224,7 +232,7 @@ LError:
 }
 
 -(void)showActivitySpinner
-{    
+{
     //
     // Find any existing indicators already in place
     //
@@ -235,7 +243,7 @@ LError:
         {
             [m_activityView setColor:HVBLUE];
         }
-        else 
+        else
         {
             HVCLEAR(m_activityView);
             // < iOS5... use older style. The large indication won't be visible on HV pages
@@ -256,9 +264,15 @@ LError:
     {
         [m_webView goBack];
     }
-    else 
+    else
     {
-        [self.navigationController popViewControllerAnimated:TRUE];
+        if(![NSThread isMainThread]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:TRUE];
+            });
+        } else {
+            [self.navigationController popViewControllerAnimated:TRUE];
+        }
     }
 }
 
