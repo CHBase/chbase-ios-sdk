@@ -525,8 +525,8 @@ LError:
     NSString *dName = (self.deviceName) ? self.deviceName : [MobilePlatform deviceName];
 	CFStringRef deviceNameEncoded = HVUrlEncode((CFStringRef)dName);
     
-	NSString *queryString = [NSString stringWithFormat:@"?appid=%@&appCreationToken=%@&instanceName=%@&ismra=true",
-                             self.masterAppId, tokenEncoded, deviceNameEncoded];
+	NSString *queryString = [NSString stringWithFormat:@"?appCreationToken=%@&instanceName=%@&ismra=true",
+                             tokenEncoded, deviceNameEncoded];
     if (isGlobal)
     {
         queryString = [queryString stringByAppendingString:@"&aib=true"];
