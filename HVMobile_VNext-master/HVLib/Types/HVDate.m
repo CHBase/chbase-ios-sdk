@@ -76,7 +76,7 @@ static const xmlChar* x_element_day   = XMLSTRINGCONST("d");
 {
     HVCHECK_NOTNULL(date);
     
-    [self initWithComponents:[NSCalendar componentsFromDate:date]]; 
+    self = [self initWithComponents:[NSCalendar componentsFromDate:date]];
     
     return self;
     
