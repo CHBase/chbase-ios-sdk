@@ -33,7 +33,7 @@ static const xmlChar* x_element_version = XMLSTRINGCONST("version");
     self = [super init];
     HVCHECK_SELF;
     
-    self.code = code;
+    self.code = strcode;
     self.vocabularyName = vocab;
     if (family)
     {
