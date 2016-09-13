@@ -22,7 +22,7 @@ static const xmlChar* x_element_version = XMLSTRINGCONST("version");
 
 -(id) initWithCode:(NSString *)strcode andVocab:(NSString *)vocab
 {
-    return [self initWithCode:code vocab:vocab vocabFamily:nil vocabVersion:nil];
+    return [self initWithCode:strcode vocab:vocab vocabFamily:nil vocabVersion:nil];
 }
 
 -(id)initWithCode:(NSString *)strcode vocab:(NSString *)vocab vocabFamily:(NSString *)family vocabVersion:(NSString *)version
@@ -33,7 +33,7 @@ static const xmlChar* x_element_version = XMLSTRINGCONST("version");
     self = [super init];
     HVCHECK_SELF;
     
-    self.code = code;
+    self.code = strcode;
     self.vocabularyName = vocab;
     if (family)
     {
