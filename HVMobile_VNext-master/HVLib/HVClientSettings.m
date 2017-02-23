@@ -48,7 +48,7 @@ static NSString* const c_element_instanceID = @"instanceID";
 {
     if ([NSString isNilOrEmpty:m_friendlyName])
     {
-        self.friendlyName = @"HealthVault Pre-Production";
+        self.friendlyName = @"CHBase Pre-Production";
     }
     
     return m_friendlyName;
@@ -232,7 +232,7 @@ LError:
 {
     if ([NSString isNilOrEmpty:m_signInTitle])
     {
-        m_signInTitle = [NSLocalizedString(@"HealthVault", @"Sign in to HealthVault") retain];
+        m_signInTitle = [NSLocalizedString(@"CHBase", @"Sign in to CHBase") retain];
     }
     
     return m_signInTitle;
@@ -242,7 +242,7 @@ LError:
 {
     if ([NSString isNilOrEmpty:m_signInRetryMessage])
     {
-        m_signInRetryMessage = [NSLocalizedString(@"Could not sign into HealthVault. Try again?", @"Retry signin message") retain];
+        m_signInRetryMessage = [NSLocalizedString(@"Could not sign into CHBase. Try again?", @"Retry signin message") retain];
     }
     
     return m_signInRetryMessage;

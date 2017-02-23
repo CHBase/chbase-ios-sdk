@@ -57,7 +57,7 @@
             BOOL xmlReaderesult = [self deserializeXml:xml];
 
 			if (!xmlReaderesult) {
-				self.errorText = [NSString stringWithFormat: NSLocalizedString(@"Response was not a valid HealthVault response key",
+				self.errorText = [NSString stringWithFormat: NSLocalizedString(@"Response was not a valid CHBase response key",
 																			   @"Format to display incorrect response"), xml];
 			}
 		}

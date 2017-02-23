@@ -8,7 +8,7 @@
      This is the app ID for the default sample Hello World application.
      Create your own application at http://swedenaccv2.dev.grcdemo.com
      -->
-    <masterAppID>4f44350e-fa2b-49b9-b1c6-6f97a3baa331</masterAppID>
+    <masterAppID>fa11db98-10db-4605-a847-3649d459d9de</masterAppID>
     <!--Application name -->
     <appName>Hello CHBase</appName>
     <isMultiInstanceAware>false</isMultiInstanceAware>
@@ -18,10 +18,10 @@
         <!--
          Url for CHBase service calls - set up for Pre-Production below
          -->
-        <serviceUrl>https://chbaseplatform-ppev2.dev.grcdemo.com/platform/wildcat.ashx</serviceUrl>
+        <serviceUrl>https://chbase-platform.dev.grcdemo.com/platform/wildcat.ashx</serviceUrl>
         <!--
          CHBase Shell - used during app provisioning on the device
          -->
-        <shellUrl>https://chbase-ppev2.dev.grcdemo.com</shellUrl>
+        <shellUrl>https://chbase-ppe.dev.grcdemo.com</shellUrl>
     </environment>
 </clientSettings>

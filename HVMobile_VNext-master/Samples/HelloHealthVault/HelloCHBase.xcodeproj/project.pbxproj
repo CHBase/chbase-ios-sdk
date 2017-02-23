@@ -18,9 +18,9 @@
 		5DB54DE3153C765700E1C6BE /* HVMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB54DE2153C765700E1C6BE /* HVMasterViewController.m */; };
 		5DB54E1A153C85A500E1C6BE /* ClientSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5DB54E19153C85A500E1C6BE /* ClientSettings.xml */; };
 		5DFD4832159B72E30003EA49 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DFD4831159B72E30003EA49 /* Security.framework */; };
+		D91886C91E6421C4008473CB /* libHVLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D99669C91BC2C25B0088650E /* libHVLib.a */; };
 		D99669C31BC2AF920088650E /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D99669C21BC2AF920088650E /* libxml2.2.tbd */; };
-		D99669CE1BC3BAC80088650E /* libHVLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D99669C91BC2C25B0088650E /* libHVLib.a */; };
-		D9C61FA01BBD1F420025A79A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9C61F9F1BBD1F420025A79A /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
+		D9C61FA01BBD1F420025A79A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9C61F9F1BBD1F420025A79A /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D99669CE1BC3BAC80088650E /* libHVLib.a in Frameworks */,
+				D91886C91E6421C4008473CB /* libHVLib.a in Frameworks */,
 				D99669C31BC2AF920088650E /* libxml2.2.tbd in Frameworks */,
 				5DB083DB18F3231800702B79 /* SystemConfiguration.framework in Frameworks */,
 				5DB2E6E218D3811D0030972D /* MobileCoreServices.framework in Frameworks */,
@@ -334,7 +334,7 @@
 				GCC_PREFIX_HEADER = "HelloHealthVault/HelloCHBase-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2/**";
 				INFOPLIST_FILE = "HelloHealthVault/HelloHealthVault-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chbase.HelloHealthVault;
 				PRODUCT_NAME = HelloCHBase;
@@ -355,7 +355,7 @@
 				GCC_PREFIX_HEADER = "HelloHealthVault/HelloCHBase-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2/**";
 				INFOPLIST_FILE = "HelloHealthVault/HelloHealthVault-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chbase.HelloHealthVault;
 				PRODUCT_NAME = HelloCHBase;
