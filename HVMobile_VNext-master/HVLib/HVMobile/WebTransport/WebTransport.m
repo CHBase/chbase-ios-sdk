@@ -79,7 +79,7 @@ static BOOL _isRequestResponseLogEnabled = HEALTH_VAULT_TRACE_ENABLED;
         return;
     }
 
-    [Logger write: [NSString stringWithFormat: NSLocalizedString(@"HealthVault web transport message key",
+    [Logger write: [NSString stringWithFormat: NSLocalizedString(@"CHBase web transport message key",
 																 @"Format to display web transport message"), message]];
 }
 

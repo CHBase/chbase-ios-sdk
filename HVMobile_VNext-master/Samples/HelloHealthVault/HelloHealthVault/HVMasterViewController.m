@@ -326,7 +326,7 @@
 //
 - (IBAction)disconnectClicked:(id)sender
 {
-    [HVUIAlert showYesNoWithMessage:@"Are you sure you want to disconnect this application from HealthVault?\r\nIf you click Yes, you will need to re-authorize the app." callback:^(id sender) {
+    [HVUIAlert showYesNoWithMessage:@"Are you sure you want to disconnect this application from CHBase?\r\nIf you click Yes, you will need to re-authorize the app." callback:^(id sender) {
         
         HVUIAlert* alert = (HVUIAlert *) sender;
         if (alert.result != HVUIAlertOK)
@@ -364,7 +364,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Hello HV", @"Master view title");
+        self.title = NSLocalizedString(@"Hello CHBase", @"Master view title");
     }
     return self;
 }
