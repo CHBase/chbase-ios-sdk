@@ -80,6 +80,55 @@ LError:
 
 -(BOOL)webView: (UIWebView *)webView shouldStartLoadWithRequest: (NSURLRequest *)request navigationType: (UIWebViewNavigationType)navigationType 
 {
+    //Fix for using BankID with the correct CFBundleURLScheme to enable redirection from the
+    //BankID application back to the current application. Requires correct configuration in the Info.plist file
+    NSString *bankIDPrefix = @"bankid://";
+    NSString *bankIDSuffix = @"mg-local%2Fauth%2Fccp10%2Fgrp%2Fthis";
+    NSString *nullSuffix = @"redirect=null";
+    
+    NSString *url = [[request URL] absoluteString];
+    
+    BOOL bankidIsPresent = [url hasPrefix:bankIDPrefix];
+    BOOL nullIsPresent = [url hasSuffix:nullSuffix];
+    BOOL unspecifiedIsPresent = [url hasSuffix:bankIDSuffix];
+    
+    if (bankidIsPresent && (nullIsPresent || unspecifiedIsPresent)) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSURL *url = [request URL];
+                
+                NSArray *bundleURLTypes = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleURLTypes"];
+                
+                NSString *defaultURLScheme = @"null";
+                
+                if(bundleURLTypes && bundleURLTypes.count > 0) {
+                    NSDictionary *bundleURL = bundleURLTypes[0];
+                    
+                    NSArray *URLScheme = [bundleURL objectForKey:@"CFBundleURLSchemes"];
+                    NSString *URLSchemeDefinition = [URLScheme objectAtIndex:0];
+                    NSLog(@"%@", URLSchemeDefinition);
+                    
+                    if(URLSchemeDefinition != nil) {
+                        defaultURLScheme = URLSchemeDefinition;
+                    }
+                }
+                
+                NSString *redirectString = [NSString stringWithFormat:@"redirect=%@://", defaultURLScheme];
+                
+                NSString *subString = [[[url absoluteString] componentsSeparatedByString:@"redirect="] objectAtIndex:0];
+                subString = [subString stringByAppendingString:redirectString];
+                url = [NSURL URLWithString:subString];
+                
+                NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+                NSLog(@"%@", [url absoluteString]);
+                
+                // reload the request
+                [self.webView loadRequest:request];
+            });
+        });
+        return NO;
+    }
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         [super webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
     
