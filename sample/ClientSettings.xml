@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<clientSettings>
+    <!--
+     See HVClientSettings.h or m for a list configurable settings
+     -->
+    <!--
+     CHBase Application ID
+     This is the app ID for the default sample Hello World application.
+     Create your own application at http://swedenaccv2.dev.grcdemo.com
+     -->
+    <masterAppID>2de3518e-3756-4dd7-af2b-282728c228be</masterAppID>
+    <!--Application name -->
+    <appName>Hello CHBase</appName>
+    <isMultiInstanceAware>false</isMultiInstanceAware>
+    <environment>
+        <name>PPE</name>
+        <friendlyName>CHBase Pre-Production</friendlyName>
+        <!--
+         Url for CHBase service calls - set up for Pre-Production below
+         -->
+        <serviceUrl>https://tbe000-chbase-platform.qas.chbase.com/platform/wildcat.ashx</serviceUrl>
+        <!--
+         CHBase Shell - used during app provisioning on the device
+         -->
+        <shellUrl>https://tbe000-chbase-shell.qas.chbase.com</shellUrl>
+    </environment>
+</clientSettings>
