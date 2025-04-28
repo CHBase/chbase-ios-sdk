@@ -72,6 +72,8 @@ HVDECLARE_GETTOR(HVSleepJournalPM, sleepJournalPM);
 
 HVDECLARE_GETTOR(HVAllergy, allergy);
 
+HVDECLARE_GETTOR(HVWebLink, weblink);
+
 HVDECLARE_GETTOR(HVCondition, condition);
 
 HVDECLARE_GETTOR(HVImmunization, immunization);
