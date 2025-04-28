@@ -1,3 +1,9 @@
+//
+//  HVMasterViewController.m
+//  HelloHealthVault
+//
+//
+//
 
 #import "HVMasterViewController.h"
 
@@ -78,7 +84,7 @@
 //-------------------------------------------
 -(void)getWeightsFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVWebLink class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVWeight class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -90,7 +96,7 @@
             // Refresh UI
             //
             [self refreshView];
-       }
+        }
         @catch (NSException *exception) {
             [HVUIAlert showInformationalMessage:exception.description];
         }
@@ -141,17 +147,18 @@
 //
 -(HVItem *)newWeight
 {
-    HVItem* item = [HVWebLink newItem];
+    HVItem* item = [HVWeight newItem];
  
-    item.weblink.url = @"https://example.com";
-    item.weblink.title = @"New Link";
+    double pounds = roundToPrecision([HVRandom randomDoubleInRangeMin:130 max:150], 2);
+    item.weight.inPounds = pounds;
+    item.weight.when = [[[HVDateTime alloc] initNow] autorelease];
     
     return item;
 }
 
 -(void)changeWeight:(HVItem *)item
 {
-    item.weblink.url = @"https//a.com";
+    item.weight.inPounds = [HVRandom randomDoubleInRangeMin:130 max:150];
 }
 
 -(void)getWeightsForLastNDays:(int)numDays
@@ -159,7 +166,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVWebLink class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVWeight class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -181,10 +188,10 @@
             // Refresh UI
             //
             [self refreshView];
-             }
+        }
         @catch (NSException *exception) {
             [HVUIAlert showInformationalMessage:exception.description];
-        }
+        }       
     }];
 }
 
@@ -224,7 +231,7 @@
     //
     // Retrieve weight information for the given HealthVault item
     //
-    HVWebLink* weight = [m_items itemAtIndex:itemIndex].weblink;
+    HVWeight* weight = [m_items itemAtIndex:itemIndex].weight;
     //
     // Display it in the table cell for the current row
     //
@@ -234,16 +241,16 @@
     return cell;
 }
 
--(void)displayWeight:(HVWebLink *)weight inCell:(UITableViewCell *)cell
+-(void)displayWeight:(HVWeight *)weight inCell:(UITableViewCell *)cell
 {
     //
     // Display WHEN the weight measurement was taken
     //
-    cell.textLabel.text = [weight.url toString];
+    cell.textLabel.text = [weight.when toStringWithFormat:@"MM/dd/YY hh:mm aaa"];
     //
     // Display the weight in pounds
     //
-    cell.detailTextLabel.text = [weight.title toString];
+    cell.detailTextLabel.text = [weight stringInPoundsWithFormat:@"%.2f lb"];
 
 }
 
