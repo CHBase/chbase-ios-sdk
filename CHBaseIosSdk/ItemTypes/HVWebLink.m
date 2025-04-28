@@ -29,8 +29,8 @@ LError:
 
 -(void)serialize:(XWriter *)writer
 {
-    HVSERIALIZE(m_url, c_element_url);
-    HVSERIALIZE(m_title, c_element_title);
+    HVSERIALIZE_STRING(m_url, c_element_url);
+    HVSERIALIZE_STRING(m_title, c_element_title);
 }
 
 -(void)deserialize:(XReader *)reader
