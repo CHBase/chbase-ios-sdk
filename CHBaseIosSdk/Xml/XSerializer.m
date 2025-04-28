@@ -224,11 +224,10 @@ LError:
 {
     HVCHECK_STRING(filePath);
     
-#ifdef LOGXML
     NSString *rawXml = [[NSString alloc] initWithContentsOfFile:filePath usedEncoding:nil error:nil];
     NSLog(@"%@\r\n%@", filePath, rawXml);
     [rawXml release];
-#endif
+
     
     XReader* reader = [[XReader alloc] initFromFile:filePath];
     HVCHECK_NOTNULL(reader);
