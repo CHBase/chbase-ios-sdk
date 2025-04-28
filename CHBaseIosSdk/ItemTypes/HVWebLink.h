@@ -8,6 +8,8 @@
     NSString* m_title;
 }
 
+@property (readwrite, nonatomic, retain) NSString* url;
+@property (readwrite, nonatomic, retain) NSString* title;
 
 +(NSString *) typeID;
 +(NSString *) XRootElement;

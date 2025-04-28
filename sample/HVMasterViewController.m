@@ -84,7 +84,7 @@
 //-------------------------------------------
 -(void)getWeightsFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVWeight class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVWebLink class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -147,11 +147,10 @@
 //
 -(HVItem *)newWeight
 {
-    HVItem* item = [HVWeight newItem];
+    HVItem* item = [HVWebLink newItem];
  
-    double pounds = roundToPrecision([HVRandom randomDoubleInRangeMin:130 max:150], 2);
-    item.weight.inPounds = pounds;
-    item.weight.when = [[[HVDateTime alloc] initNow] autorelease];
+    item.url = "https://example.com"
+    item.title = "New Link";
     
     return item;
 }
@@ -166,7 +165,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVWeight class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVWebLink class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -231,7 +230,7 @@
     //
     // Retrieve weight information for the given HealthVault item
     //
-    HVWeight* weight = [m_items itemAtIndex:itemIndex].weight;
+    HVWebLink* weight = [m_items itemAtIndex:itemIndex].link;
     //
     // Display it in the table cell for the current row
     //
@@ -241,16 +240,16 @@
     return cell;
 }
 
--(void)displayWeight:(HVWeight *)weight inCell:(UITableViewCell *)cell
+-(void)displayWeight:(HVWebLink *)weight inCell:(UITableViewCell *)cell
 {
     //
     // Display WHEN the weight measurement was taken
     //
-    cell.textLabel.text = [weight.when toStringWithFormat:@"MM/dd/YY hh:mm aaa"];
+    cell.textLabel.text = [weight.url];
     //
     // Display the weight in pounds
     //
-    cell.detailTextLabel.text = [weight stringInPoundsWithFormat:@"%.2f lb"];
+    cell.detailTextLabel.text = [weight.title];
 
 }
 
