@@ -35,8 +35,8 @@ LError:
 
 -(void)deserialize:(XReader *)reader
 {
-    HVDESERIALIZE(m_url, c_element_url, NSString);
-    HVDESERIALIZE(m_title, c_element_title, NSString);
+    HVDESERIALIZE_STRING(m_url, c_element_url);
+    HVDESERIALIZE_STRING(m_title, c_element_title);
 }
 
 +(NSString *)typeID
