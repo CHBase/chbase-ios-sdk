@@ -58,11 +58,11 @@
     // Update the UI to show the record owner's display name
     //
     NSString* displayName = [HVClient current].currentRecord.displayName;
-    self.navigationItem.title = [NSString stringWithFormat:@"%@'s Weight", displayName];
+    self.navigationItem.title = [NSString stringWithFormat:@"%@'s Data", displayName];
     //
-    // Fetch list of weights from HealthVault
+    // Fetch list of data from HealthVault
     //
-    [self getWeightsFromHealthVault];   
+    [self getDataFromHealthVault];   
 }
 
 -(void)startupFailed
@@ -82,9 +82,9 @@
 // Get/Put items to/from HealthVault
 //
 //-------------------------------------------
--(void)getWeightsFromHealthVault
+-(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVWeight class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVComment class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -104,9 +104,9 @@
 }
 
 //
-// Push a new weight into HealthVault
+// Push a new data into HealthVault
 //
--(void)putWeightInHealthVault:(HVItem *)item
+-(void)putDataInHealthVault:(HVItem *)item
 {
     [[HVClient current].currentRecord putItem:item callback:^(HVTask *task) 
     {
@@ -116,9 +116,9 @@
             //
             [task checkSuccess];  
             //
-            // Refresh with the latest list of weights from HealthVault
+            // Refresh with the latest list of data from HealthVault
             //
-            [self getWeightsFromHealthVault];  
+            [self getDataFromHealthVault];  
         }
         @catch (NSException *exception) {
             [HVUIAlert showInformationalMessage:exception.description];
@@ -126,7 +126,7 @@
     } ];
 }
 
--(void)removeWeightFromHealthVault:(HVItemKey *)itemKey
+-(void)removeDataFromHealthVault:(HVItemKey *)itemKey
 {
     [[HVClient current].currentRecord removeItemWithKey:itemKey callback:^(HVTask *task) {
         @try {
@@ -134,7 +134,7 @@
             //
             // Refresh
             //
-            [self getWeightsFromHealthVault];
+            [self getDataFromHealthVault];
         }
        @catch (NSException *exception) {
             [HVUIAlert showInformationalMessage:exception.description];
@@ -143,30 +143,33 @@
 }
 
 //
-// Create a new random weight between 130 and 150 pounds, and the current date&time
+// Create a new random data
 //
--(HVItem *)newWeight
+-(HVItem *)newData
 {
-    HVItem* item = [HVWeight newItem];
+    HVItem* item = [HVComment newItem];
  
     double pounds = roundToPrecision([HVRandom randomDoubleInRangeMin:130 max:150], 2);
-    item.weight.inPounds = pounds;
-    item.weight.when = [[[HVDateTime alloc] initNow] autorelease];
+    item.comment.content = @"Some random comment";
+    HVApproxDateTime *dt = [[HVApproxDateTime alloc] initWithDescription:@"last week"];
+
+    
+    item.comment.when = dt;
     
     return item;
 }
 
--(void)changeWeight:(HVItem *)item
+-(void)changeData:(HVItem *)item
 {
-    item.weight.inPounds = [HVRandom randomDoubleInRangeMin:130 max:150];
+    item.comment.content = [@"1" stringByAppendingString: item.comment.content];
 }
 
--(void)getWeightsForLastNDays:(int)numDays
+-(void)getDataForLastNDays:(int)numDays
 {
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVWeight class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVComment class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -197,7 +200,7 @@
 
 //-------------------------------------------
 //
-// Displaying a list of Weights in a Table View
+// Displaying a list of items in a Table View
 //
 //-------------------------------------------
         
@@ -228,30 +231,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger itemIndex = indexPath.row;
-    //
-    // Retrieve weight information for the given HealthVault item
-    //
-    HVWeight* weight = [m_items itemAtIndex:itemIndex].weight;
+
+    HVComment* item = [m_items itemAtIndex:itemIndex].comment;
     //
     // Display it in the table cell for the current row
     //
     UITableViewCell *cell = [self getCellFor:tableView];
-    [self displayWeight:weight inCell:cell];
+    [self displayData:item inCell:cell];
      
     return cell;
 }
 
--(void)displayWeight:(HVWeight *)weight inCell:(UITableViewCell *)cell
+-(void)displayData:(HVComment *)item inCell:(UITableViewCell *)cell
 {
-    //
-    // Display WHEN the weight measurement was taken
-    //
-    cell.textLabel.text = [weight.when toStringWithFormat:@"MM/dd/YY hh:mm aaa"];
-    //
-    // Display the weight in pounds
-    //
-    cell.detailTextLabel.text = [weight stringInPoundsWithFormat:@"%.2f lb"];
-
+    cell.textLabel.text = [item.when toStringWithFormat:@"MM/dd/YY hh:mm aaa"];
+    cell.detailTextLabel.text = [item.content toString];
 }
 
 -(UITableViewCell *)getCellFor:(UITableView *)table
@@ -275,7 +269,7 @@
 //
 - (IBAction)refreshButtonClicked:(id)sender 
 {
-    [self getWeightsFromHealthVault];
+    [self getDataFromHealthVault];
 }
 
 //
@@ -283,8 +277,8 @@
 //
 - (IBAction)addButtonClicked:(id)sender 
 {
-    HVItem* item = [[self newWeight] autorelease];
-    [self putWeightInHealthVault:item];
+    HVItem* item = [[self newData] autorelease];
+    [self putDataInHealthVault:item];
 }
 
 //
@@ -299,11 +293,11 @@
     }
     
     NSUInteger itemIndex = selection.row;
-    [self removeWeightFromHealthVault:[m_items itemAtIndex:itemIndex].key];
+    [self removeDataFromHealthVault:[m_items itemAtIndex:itemIndex].key];
 }
 
 //
-// Change the selected item to a new weight and push it to HealthVault
+// Change the selected item to a new data and push it to HealthVault
 //
 - (IBAction)updateButtonClicked:(id)sender 
 {
@@ -316,9 +310,9 @@
     NSUInteger itemIndex = selection.row;
     HVItem* item = [m_items itemAtIndex:itemIndex];
 
-    [self changeWeight:item];
+    [self changeData:item];
     
-    [self putWeightInHealthVault:item];
+    [self putDataInHealthVault:item];
 }
 
 //

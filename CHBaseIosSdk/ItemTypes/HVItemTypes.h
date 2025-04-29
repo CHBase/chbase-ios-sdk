@@ -22,6 +22,7 @@
 #import "HVDailyDietaryIntake.h"
 #import "HVAllergy.h"
 #import "HVWebLink.h"
+#import "HVComment.h"
 #import "HVCondition.h"
 #import "HVImmunization.h"
 #import "HVMedication.h"
@@ -71,6 +72,7 @@
 
 -(HVAllergy *) allergy;
 -(HVWebLink *) weblink;
+-(HVComment *) comment;
 -(HVCondition *) condition;
 -(HVImmunization *) immunization;
 -(HVMedication *) medication;
