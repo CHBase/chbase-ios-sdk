@@ -84,7 +84,7 @@
 //-------------------------------------------
 -(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVComment class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVConcern class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -147,21 +147,18 @@
 //
 -(HVItem *)newData
 {
-    HVItem* item = [HVComment newItem];
+    HVItem* item = [HVConcern newItem];
  
     double pounds = roundToPrecision([HVRandom randomDoubleInRangeMin:130 max:150], 2);
-    item.comment.content = @"Some random comment";
-    HVApproxDateTime *dt = [[HVApproxDateTime alloc] initWithDescription:@"last week"];
-
-    
-    item.comment.when = dt;
+    item.concern.description = [[HVCodableValue alloc] initWithText:@"Some description"];
+    item.concern.status = [[HVCodableValue alloc] initWithText:@"Some status"];
     
     return item;
 }
 
 -(void)changeData:(HVItem *)item
 {
-    item.comment.content = [@"1" stringByAppendingString: item.comment.content];
+    item.concern.description = [[HVCodableValue alloc] initWithText:@"Some description updated"];
 }
 
 -(void)getDataForLastNDays:(int)numDays
@@ -169,7 +166,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVComment class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVConcern class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -232,7 +229,7 @@
 {
     NSInteger itemIndex = indexPath.row;
 
-    HVComment* item = [m_items itemAtIndex:itemIndex].comment;
+    HVConcern* item = [m_items itemAtIndex:itemIndex].concern;
     //
     // Display it in the table cell for the current row
     //
@@ -242,10 +239,10 @@
     return cell;
 }
 
--(void)displayData:(HVComment *)item inCell:(UITableViewCell *)cell
+-(void)displayData:(HVConcern *)item inCell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = [item.when toStringWithFormat:@"MM/dd/YY hh:mm aaa"];
-    cell.detailTextLabel.text = [item.content toString];
+    cell.textLabel.text = [item.description toString];
+    cell.detailTextLabel.text = [item.status toString];
 }
 
 -(UITableViewCell *)getCellFor:(UITableView *)table

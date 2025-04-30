@@ -76,6 +76,8 @@ HVDECLARE_GETTOR(HVWebLink, weblink);
 
 HVDECLARE_GETTOR(HVComment, comment);
 
+HVDECLARE_GETTOR(HVConcern, concern);
+
 HVDECLARE_GETTOR(HVCondition, condition);
 
 HVDECLARE_GETTOR(HVImmunization, immunization);
