@@ -7,7 +7,7 @@
 
 #import "HVMasterViewController.h"
 
-@implementation HVMasterViewController
+@implementation HVMasterViewController;
 @synthesize itemsTable;
 
 
@@ -84,7 +84,7 @@
 //-------------------------------------------
 -(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVConcern class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVHba1c class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -147,18 +147,21 @@
 //
 -(HVItem *)newData
 {
-    HVItem* item = [HVConcern newItem];
+    HVItem* item = [HVHba1c newItem];
+
+    item.hba1c.when = [[[HVDateTime alloc] initNow] autorelease];
  
-    double pounds = roundToPrecision([HVRandom randomDoubleInRangeMin:130 max:150], 2);
-    item.concern.description = [[HVCodableValue alloc] initWithText:@"Some description"];
-    item.concern.status = [[HVCodableValue alloc] initWithText:@"Some status"];
-    
+    double val = roundToPrecision([HVRandom randomDoubleInRangeMin:130 max:150], 2);
+    item.hba1c.value = [[HVHbA1CValue alloc]init];
+    item.hba1c.value.mmolPerMol= [[HVPositiveDouble alloc]initWith:val];
+    item.hba1c.hba1cAssayMethod = [[HVCodableValue alloc] initWithText:@"hemoglobin A1C"];
+    item.hba1c.deviceId = @"1234";
     return item;
 }
 
 -(void)changeData:(HVItem *)item
 {
-    item.concern.description = [[HVCodableValue alloc] initWithText:@"Some description updated"];
+    item.hba1c.value.mmolPerMol.value = item.hba1c.value.mmolPerMol.value+1;
 }
 
 -(void)getDataForLastNDays:(int)numDays
@@ -166,7 +169,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVConcern class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVHba1c class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -229,7 +232,7 @@
 {
     NSInteger itemIndex = indexPath.row;
 
-    HVConcern* item = [m_items itemAtIndex:itemIndex].concern;
+    HVHba1c* item = [m_items itemAtIndex:itemIndex].hba1c;
     //
     // Display it in the table cell for the current row
     //
@@ -239,10 +242,10 @@
     return cell;
 }
 
--(void)displayData:(HVConcern *)item inCell:(UITableViewCell *)cell
+-(void)displayData:(HVHba1c *)item inCell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = [item.description toString];
-    cell.detailTextLabel.text = [item.status toString];
+    cell.textLabel.text = [item.when toStringWithFormat:@"MM/dd/YY hh:mm aaa"];
+    cell.detailTextLabel.text = [item.value.mmolPerMol toString];
 }
 
 -(UITableViewCell *)getCellFor:(UITableView *)table

@@ -92,6 +92,7 @@ static HVTypeSystem* s_typeRegistry;
     [s_typeRegistry addClass:[HVWebLink class] forTypeID:[HVWebLink typeID]];
     [s_typeRegistry addClass:[HVComment class] forTypeID:[HVComment typeID]];
     [s_typeRegistry addClass:[HVConcern class] forTypeID:[HVConcern typeID]];
+    [s_typeRegistry addClass:[HVHba1c class] forTypeID:[HVHba1c typeID]];
     [s_typeRegistry addClass:[HVCondition class] forTypeID:[HVCondition typeID]];
     [s_typeRegistry addClass:[HVMedication class] forTypeID:[HVMedication typeID]];    
     [s_typeRegistry addClass:[HVImmunization class] forTypeID:[HVImmunization typeID]];   

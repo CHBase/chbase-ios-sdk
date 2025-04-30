@@ -78,6 +78,8 @@ HVDECLARE_GETTOR(HVComment, comment);
 
 HVDECLARE_GETTOR(HVConcern, concern);
 
+HVDECLARE_GETTOR(HVHba1c, hba1c);
+
 HVDECLARE_GETTOR(HVCondition, condition);
 
 HVDECLARE_GETTOR(HVImmunization, immunization);

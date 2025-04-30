@@ -24,6 +24,7 @@
 #import "HVWebLink.h"
 #import "HVComment.h"
 #import "HVConcern.h"
+#import "HVHba1c.h"
 #import "HVCondition.h"
 #import "HVImmunization.h"
 #import "HVMedication.h"
@@ -75,6 +76,7 @@
 -(HVWebLink *) weblink;
 -(HVComment *) comment;
 -(HVConcern *) concern;
+-(HVHba1c *) hba1c;
 -(HVCondition *) condition;
 -(HVImmunization *) immunization;
 -(HVMedication *) medication;
