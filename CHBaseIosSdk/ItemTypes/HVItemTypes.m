@@ -80,6 +80,8 @@ HVDECLARE_GETTOR(HVConcern, concern);
 
 HVDECLARE_GETTOR(HVHba1c, hba1c);
 
+HVDECLARE_GETTOR(HVAdvanceDirectiveV2, advancedirectivev2);
+
 HVDECLARE_GETTOR(HVCondition, condition);
 
 HVDECLARE_GETTOR(HVImmunization, immunization);

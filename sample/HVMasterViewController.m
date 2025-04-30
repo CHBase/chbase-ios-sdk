@@ -84,7 +84,7 @@
 //-------------------------------------------
 -(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVHba1c class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVAdvanceDirectiveV2 class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -147,21 +147,24 @@
 //
 -(HVItem *)newData
 {
-    HVItem* item = [HVHba1c newItem];
+    HVItem* item = [HVAdvanceDirectiveV2 newItem];
 
-    item.hba1c.when = [[[HVDateTime alloc] initNow] autorelease];
- 
-    double val = roundToPrecision([HVRandom randomDoubleInRangeMin:130 max:150], 2);
-    item.hba1c.value = [[HVHbA1CValue alloc]init];
-    item.hba1c.value.mmolPerMol= [[HVPositiveDouble alloc]initWith:val];
-    item.hba1c.hba1cAssayMethod = [[HVCodableValue alloc] initWithText:@"hemoglobin A1C"];
-    item.hba1c.deviceId = @"1234";
+    item.advancedirectivev2.when = [[[HVDateTime alloc] initNow] autorelease];
+    item.advancedirectivev2.name = @"ios sample adv";
+
+    HVAdvanceDirectiveContactType *contact = [[HVAdvanceDirectiveContactType alloc]init];
+    item.advancedirectivev2.contact = [[HVAdvanceDirectiveContactTypeCollection alloc] init];
+    contact.name  =[[HVName alloc]initWithFullName:@"Jhon doe Ios"];
+    [item.advancedirectivev2.contact addObject:contact];
+    [item.advancedirectivev2.contact addObject:contact];
+    [item.advancedirectivev2.contact addObject:contact];
+
     return item;
 }
 
 -(void)changeData:(HVItem *)item
 {
-    item.hba1c.value.mmolPerMol.value = item.hba1c.value.mmolPerMol.value+1;
+    item.advancedirectivev2.name = @"updated name";
 }
 
 -(void)getDataForLastNDays:(int)numDays
@@ -169,7 +172,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVHba1c class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVAdvanceDirectiveV2 class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -232,7 +235,7 @@
 {
     NSInteger itemIndex = indexPath.row;
 
-    HVHba1c* item = [m_items itemAtIndex:itemIndex].hba1c;
+    HVAdvanceDirectiveV2* item = [m_items itemAtIndex:itemIndex].advancedirectivev2;
     //
     // Display it in the table cell for the current row
     //
@@ -242,10 +245,10 @@
     return cell;
 }
 
--(void)displayData:(HVHba1c *)item inCell:(UITableViewCell *)cell
+-(void)displayData:(HVAdvanceDirectiveV2 *)item inCell:(UITableViewCell *)cell
 {
     cell.textLabel.text = [item.when toStringWithFormat:@"MM/dd/YY hh:mm aaa"];
-    cell.detailTextLabel.text = [item.value.mmolPerMol toString];
+    cell.detailTextLabel.text = [item.contact itemAtIndex:0].name.fullName ;
 }
 
 -(UITableViewCell *)getCellFor:(UITableView *)table

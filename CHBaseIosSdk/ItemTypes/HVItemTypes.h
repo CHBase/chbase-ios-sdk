@@ -25,6 +25,7 @@
 #import "HVComment.h"
 #import "HVConcern.h"
 #import "HVHba1c.h"
+#import "HVAdvanceDirectiveV2.h"
 #import "HVCondition.h"
 #import "HVImmunization.h"
 #import "HVMedication.h"
@@ -77,6 +78,7 @@
 -(HVComment *) comment;
 -(HVConcern *) concern;
 -(HVHba1c *) hba1c;
+-(HVAdvanceDirectiveV2 *) advancedirectivev2;
 -(HVCondition *) condition;
 -(HVImmunization *) immunization;
 -(HVMedication *) medication;

@@ -9,7 +9,8 @@
 // Include HealthVault Library
 //
 #import "HVLib.h"
-#import "HVHba1cvalue.h"
+#import "HVAdvanceDirectiveV2.h"
+
 @interface HVMasterViewController : UIViewController <UITableViewDataSource>
 {
     //
