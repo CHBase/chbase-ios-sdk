@@ -24,6 +24,7 @@
 #import "HVWebLink.h"
 #import "HVComment.h"
 #import "HVConcern.h"
+#import "HVBmi.h"
 #import "HVHba1c.h"
 #import "HVAdvanceDirectiveV2.h"
 #import "HVCondition.h"
@@ -77,6 +78,7 @@
 -(HVWebLink *) weblink;
 -(HVComment *) comment;
 -(HVConcern *) concern;
+-(HVBmi *) bmi;
 -(HVHba1c *) hba1c;
 -(HVAdvanceDirectiveV2 *) advancedirectivev2;
 -(HVCondition *) condition;

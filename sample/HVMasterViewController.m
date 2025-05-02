@@ -84,7 +84,7 @@
 //-------------------------------------------
 -(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVAdvanceDirectiveV2 class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVBmi class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -147,24 +147,20 @@
 //
 -(HVItem *)newData
 {
-    HVItem* item = [HVAdvanceDirectiveV2 newItem];
+    HVItem* item = [HVBmi newItem];
 
-    item.advancedirectivev2.when = [[[HVDateTime alloc] initNow] autorelease];
-    item.advancedirectivev2.name = @"ios sample adv";
-
-    HVAdvanceDirectiveContactType *contact = [[HVAdvanceDirectiveContactType alloc]init];
-    item.advancedirectivev2.contact = [[HVAdvanceDirectiveContactTypeCollection alloc] init];
-    contact.name  =[[HVName alloc]initWithFullName:@"Jhon doe Ios"];
-    [item.advancedirectivev2.contact addObject:contact];
-    [item.advancedirectivev2.contact addObject:contact];
-    [item.advancedirectivev2.contact addObject:contact];
+    item.bmi.when = [[[HVDateTime alloc] initNow] autorelease];
+    item.bmi.height= [[[HVLengthMeasurement alloc] initWithMeters:1.8] autorelease];
+    item.bmi.weight= [[[HVWeightMeasurement alloc] initWithKg:70.0] autorelease];
+    item.bmi.value = [[[HVBmiValue alloc] init] autorelease];
+    item.bmi.value.kgm2= [[[HVNonNegativeDouble alloc] initWith:1.8] autorelease];
 
     return item;
 }
 
 -(void)changeData:(HVItem *)item
 {
-    item.advancedirectivev2.name = @"updated name";
+    item.bmi.value.kgm2.value = item.bmi.value.kgm2.value+.01;
 }
 
 -(void)getDataForLastNDays:(int)numDays
@@ -172,7 +168,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVAdvanceDirectiveV2 class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVBmi class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -235,7 +231,7 @@
 {
     NSInteger itemIndex = indexPath.row;
 
-    HVAdvanceDirectiveV2* item = [m_items itemAtIndex:itemIndex].advancedirectivev2;
+    HVBmi* item = [m_items itemAtIndex:itemIndex].bmi;
     //
     // Display it in the table cell for the current row
     //
@@ -245,10 +241,10 @@
     return cell;
 }
 
--(void)displayData:(HVAdvanceDirectiveV2 *)item inCell:(UITableViewCell *)cell
+-(void)displayData:(HVBmi *)item inCell:(UITableViewCell *)cell
 {
     cell.textLabel.text = [item.when toStringWithFormat:@"MM/dd/YY hh:mm aaa"];
-    cell.detailTextLabel.text = [item.contact itemAtIndex:0].name.fullName ;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.20lf", item.value.kgm2.value];
 }
 
 -(UITableViewCell *)getCellFor:(UITableView *)table

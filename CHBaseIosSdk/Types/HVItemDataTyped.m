@@ -92,6 +92,7 @@ static HVTypeSystem* s_typeRegistry;
     [s_typeRegistry addClass:[HVWebLink class] forTypeID:[HVWebLink typeID]];
     [s_typeRegistry addClass:[HVComment class] forTypeID:[HVComment typeID]];
     [s_typeRegistry addClass:[HVConcern class] forTypeID:[HVConcern typeID]];
+    [s_typeRegistry addClass:[HVBmi class] forTypeID:[HVBmi typeID]];
     [s_typeRegistry addClass:[HVHba1c class] forTypeID:[HVHba1c typeID]];
     [s_typeRegistry addClass:[HVAdvanceDirectiveV2 class] forTypeID:[HVAdvanceDirectiveV2 typeID]];
     [s_typeRegistry addClass:[HVCondition class] forTypeID:[HVCondition typeID]];
