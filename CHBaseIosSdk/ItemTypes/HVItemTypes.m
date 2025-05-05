@@ -98,6 +98,12 @@ HVDECLARE_GETTOR(HVVitalSigns, vitalSigns);
 
 HVDECLARE_GETTOR(HVEncounter, encounter);
 
+HVDECLARE_GETTOR(HVBloodOxygenSaturation, bloodOxygenSaturation);
+
+HVDECLARE_GETTOR(HVBodyDimension, bodyDimension);
+
+HVDECLARE_GETTOR(HVStatus, status);
+
 HVDECLARE_GETTOR(HVFamilyHistory, familyHistory);
 
 HVDECLARE_GETTOR(HVCCD, ccd);

@@ -8,6 +8,9 @@
 #import "HVBloodPressure.h"
 #import "HVCholesterol.h"
 #import "HVCholesterolV2.h"
+#import "HVBloodOxygenSaturation.h"
+#import "HVBodyDimension.h"
+#import "HVStatus.h"
 #import "HVBloodGlucose.h"
 #import "HVCholesterolV2.h"
 #import "HVHeartRate.h"
@@ -95,8 +98,11 @@
 -(HVInsurance *) insurance;
 -(HVMessage *) message;
 -(HVLabTestResults *) labResults;
+-(HVBloodOxygenSaturation *) bloodOxygenSaturation;
 
+-(HVBodyDimension *) bodyDimension;
 -(HVEmergencyOrProviderContact *) emergencyOrProviderContact;
+-(HVStatus *) status;
 -(HVPersonalContactInfo *) personalContact;
 
 -(HVBasicDemographics *) basicDemographics;

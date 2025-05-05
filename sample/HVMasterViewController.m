@@ -84,7 +84,7 @@
 //-------------------------------------------
 -(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVAppointment class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVStatus class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -147,22 +147,17 @@
 //
 -(HVItem *)newData
 {
-    HVItem* item = [HVAppointment newItem];
+    HVItem* item = [HVStatus newItem];
 
-    item.appointment.when = [[[HVDateTime alloc] initNow] autorelease];
-    item.appointment.duration= [[[HVDuration alloc] initWithStartDate:[NSDate date] endDate:[NSDate date]] autorelease];
-    item.appointment.service= [[[HVCodableValue alloc] initWithText:@"Service"] autorelease];
-    item.appointment.clinic=[[HVPerson alloc] initWithName:@"Dr. M" andEmail:@"a@b.com"];
-    item.appointment.specialty= [[[HVCodableValue alloc] initWithText:@"specialty"] autorelease];
-    item.appointment.status= [[[HVCodableValue alloc] initWithText:@"status"] autorelease];
-    item.appointment.careClass= [[[HVCodableValue alloc] initWithText:@"care-class"] autorelease];
-
+    item.status.statusType= [[[HVCodableValue alloc] initWithText:@"Service"] autorelease];
+    item.status.text = @"Some status";
+    
     return item;
 }
 
 -(void)changeData:(HVItem *)item
 {
-    item.appointment.when =  [[[HVDateTime alloc] initNow] autorelease];
+    item.status.text =  @"Some status updated";
 }
 
 -(void)getDataForLastNDays:(int)numDays
@@ -170,7 +165,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVAppointment class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVStatus class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -233,7 +228,7 @@
 {
     NSInteger itemIndex = indexPath.row;
 
-    HVAppointment* item = [m_items itemAtIndex:itemIndex].appointment;
+    HVStatus* item = [m_items itemAtIndex:itemIndex].status;
     //
     // Display it in the table cell for the current row
     //
@@ -243,10 +238,10 @@
     return cell;
 }
 
--(void)displayData:(HVAppointment *)item inCell:(UITableViewCell *)cell
+-(void)displayData:(HVStatus *)item inCell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = [item.when toStringWithFormat:@"MM/dd/YY hh:mm aaa"];
-    cell.detailTextLabel.text = [item.duration.startDate toString];
+    cell.textLabel.text = item.statusType.text;
+    cell.detailTextLabel.text = item.text;
 }
 
 -(UITableViewCell *)getCellFor:(UITableView *)table
