@@ -84,7 +84,7 @@
 //-------------------------------------------
 -(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVStatus class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVBloodOxygenSaturation class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -147,17 +147,20 @@
 //
 -(HVItem *)newData
 {
-    HVItem* item = [HVStatus newItem];
+    HVItem* item = [HVBloodOxygenSaturation newItem];
 
-    item.status.statusType= [[[HVCodableValue alloc] initWithText:@"Service"] autorelease];
-    item.status.text = @"Some status";
+    item.bloodOxygenSaturation.when = [[[HVDateTime alloc] initNow] autorelease];
+    item.bloodOxygenSaturation.value = [[[HVNonNegativeDouble alloc] initWith:0.92] autorelease];
+    item.bloodOxygenSaturation.measurementMethod= [[[HVCodableValue alloc] initWithText:@"method"] autorelease];
+    item.bloodOxygenSaturation.measurementFlags= [[[HVCodableValue alloc] initWithText:@"flags"] autorelease];
+    
     
     return item;
 }
 
 -(void)changeData:(HVItem *)item
 {
-    item.status.text =  @"Some status updated";
+    item.bloodOxygenSaturation.value.value = item.bloodOxygenSaturation.value.value+.01;
 }
 
 -(void)getDataForLastNDays:(int)numDays
@@ -165,7 +168,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVStatus class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVBloodOxygenSaturation class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -228,7 +231,7 @@
 {
     NSInteger itemIndex = indexPath.row;
 
-    HVStatus* item = [m_items itemAtIndex:itemIndex].status;
+    HVBloodOxygenSaturation* item = [m_items itemAtIndex:itemIndex].bloodOxygenSaturation;
     //
     // Display it in the table cell for the current row
     //
@@ -238,10 +241,10 @@
     return cell;
 }
 
--(void)displayData:(HVStatus *)item inCell:(UITableViewCell *)cell
+-(void)displayData:(HVBloodOxygenSaturation *)item inCell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = item.statusType.text;
-    cell.detailTextLabel.text = item.text;
+    cell.textLabel.text = [item.when toStringWithFormat:@"MM/dd/YY hh:mm aaa"];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.20lf",item.value.value] ;
 }
 
 -(UITableViewCell *)getCellFor:(UITableView *)table
