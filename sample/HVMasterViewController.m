@@ -84,7 +84,7 @@
 //-------------------------------------------
 -(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVBloodOxygenSaturation class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVBodyDimension class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -147,20 +147,19 @@
 //
 -(HVItem *)newData
 {
-    HVItem* item = [HVBloodOxygenSaturation newItem];
+    HVItem* item = [HVBodyDimension newItem];
 
-    item.bloodOxygenSaturation.when = [[[HVDateTime alloc] initNow] autorelease];
-    item.bloodOxygenSaturation.value = [[[HVNonNegativeDouble alloc] initWith:0.92] autorelease];
-    item.bloodOxygenSaturation.measurementMethod= [[[HVCodableValue alloc] initWithText:@"method"] autorelease];
-    item.bloodOxygenSaturation.measurementFlags= [[[HVCodableValue alloc] initWithText:@"flags"] autorelease];
-    
+    item.bodyDimension.when = [[[HVApproxDateTime alloc] initNow] autorelease];
+
+    item.bodyDimension.measurementName= [[[HVCodableValue alloc] initWithText:@"height"] autorelease];
+    item.bodyDimension.value =  [[[HVLengthMeasurement alloc] initWithMeters:1.80] autorelease];
     
     return item;
 }
 
 -(void)changeData:(HVItem *)item
 {
-    item.bloodOxygenSaturation.value.value = item.bloodOxygenSaturation.value.value+.01;
+    item.bodyDimension.value.value.value = item.bodyDimension.value.value.value+.01;
 }
 
 -(void)getDataForLastNDays:(int)numDays
@@ -168,7 +167,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVBloodOxygenSaturation class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVBodyDimension class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -231,7 +230,7 @@
 {
     NSInteger itemIndex = indexPath.row;
 
-    HVBloodOxygenSaturation* item = [m_items itemAtIndex:itemIndex].bloodOxygenSaturation;
+    HVBodyDimension* item = [m_items itemAtIndex:itemIndex].bodyDimension;
     //
     // Display it in the table cell for the current row
     //
@@ -241,10 +240,10 @@
     return cell;
 }
 
--(void)displayData:(HVBloodOxygenSaturation *)item inCell:(UITableViewCell *)cell
+-(void)displayData:(HVBodyDimension *)item inCell:(UITableViewCell *)cell
 {
     cell.textLabel.text = [item.when toStringWithFormat:@"MM/dd/YY hh:mm aaa"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.20lf",item.value.value] ;
+    cell.detailTextLabel.text = [item.value.value toString];
 }
 
 -(UITableViewCell *)getCellFor:(UITableView *)table
