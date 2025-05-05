@@ -78,6 +78,8 @@ HVDECLARE_GETTOR(HVComment, comment);
 
 HVDECLARE_GETTOR(HVConcern, concern);
 
+HVDECLARE_GETTOR(HVAppointment, appointment);
+
 HVDECLARE_GETTOR(HVBmi, bmi);
 
 HVDECLARE_GETTOR(HVHba1c, hba1c);
