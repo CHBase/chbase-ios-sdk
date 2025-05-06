@@ -52,7 +52,7 @@ LError:
     self = [super init];
     HVCHECK_SELF;
     
-    self.type = [HVTask class];
+    self.type = [HVLevel class];
     
     return self;
     

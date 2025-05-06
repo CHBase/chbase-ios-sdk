@@ -84,9 +84,9 @@
 //-------------------------------------------
 -(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVReferral class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVSleepSession class] callback:^(HVTask *task) 
     {
-@try {
+        @try {
             //
             // Save the collection of items retrieved
             //
@@ -147,31 +147,47 @@
 //
 -(HVItem *)newData
 {
-    HVItem* item = [HVReferral newItem];
+    HVItem* item = [HVSleepSession newItem];
 
-    item.referral.when = [[[HVDateTime alloc] initNow] autorelease];
+    item.sleepSession.when = [[[HVDateTime alloc] initNow] autorelease];
 
-    item.referral.referralType= [[[HVCodableValue alloc] initWithText:@"Consult"] autorelease];
-    item.referral.reason= [[[HVCodableValue alloc] initWithText:@"Consult"] autorelease];
-    item.referral.referredBy =  [[[HVPerson alloc] initWithName:@"By John Doe" andPhone:@"123-456-7890"] autorelease];
-    item.referral.referredTo =  [[[HVPerson alloc] initWithName:@"To That Guy" andPhone:@"123-456-7890"] autorelease];
-    item.referral.task = [[HVTaskCollection alloc] init];
+    item.sleepSession.bedTime= [[[HVTime alloc] initWithHour:2 minute:30] autorelease];
+    item.sleepSession.wakeTime= [[[HVTime alloc] initWithHour:4 minute:30] autorelease];
+    item.sleepSession.sleepMinutes= [[[HVNonNegativeInt alloc] initWith:120] autorelease];
+    item.sleepSession.wakeState =  [[[HVNonNegativeInt alloc] initWith:3] autorelease];
 
-    HVReferralTask *task = [[HVReferralTask alloc]init];
-    task.businessStatus = [[[HVCodableValue alloc] initWithText:@"Business"] autorelease];
-    task.taskReason = [[[HVCodableValue alloc] initWithText:@"Reason"] autorelease];
-    task.owner = [[[HVPerson alloc] initWithName:@"Task Owner" andPhone:@"123-456-7890"] autorelease];
 
-    [item.referral.task addObject:task];
-    [item.referral.task addObject:task];
-    [item.referral.task addObject:task];
+    item.sleepSession.level = [[HVLevelCollection alloc] init];
+    
+
+    HVLevel *level = [[HVLevel alloc]init];
+    level.startTime = [[[HVTime alloc] initWithHour:2 minute:30] autorelease];
+    level.minutes = [[[HVNonNegativeInt alloc] initWith:120] autorelease];
+    level.state = [[[HVCodableValue alloc] initWithText:@"Superb"] autorelease];
+
+    [item.sleepSession.level addObject:level];
+    [item.sleepSession.level addObject:level];
+    [item.sleepSession.level addObject:level];
+
+
+    item.sleepSession.awakening = [[HVAwakeningCollection alloc] init];
+    
+
+    HVAwakening *awakening = [[HVAwakening alloc]init];
+    awakening.when = [[[HVTime alloc] initWithHour:4 minute:30] autorelease];
+    awakening.minutes = [[[HVNonNegativeInt alloc] initWith:120] autorelease];
+
+
+    [item.sleepSession.awakening addObject:awakening];
+    [item.sleepSession.awakening addObject:awakening];
+    [item.sleepSession.awakening addObject:awakening];
     
     return item;
 }
 
 -(void)changeData:(HVItem *)item
 {
-    item.referral.when = [[[HVDateTime alloc] initNow] autorelease];
+    item.sleepSession.when = [[[HVDateTime alloc] initNow] autorelease];
 }
 
 -(void)getDataForLastNDays:(int)numDays
@@ -179,7 +195,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVReferral class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVSleepSession class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -242,7 +258,7 @@
 {
     NSInteger itemIndex = indexPath.row;
 
-    HVReferral* item = [m_items itemAtIndex:itemIndex].referral;
+    HVSleepSession* item = [m_items itemAtIndex:itemIndex].sleepSession;
     //
     // Display it in the table cell for the current row
     //
@@ -252,10 +268,10 @@
     return cell;
 }
 
--(void)displayData:(HVReferral *)item inCell:(UITableViewCell *)cell
+-(void)displayData:(HVSleepSession *)item inCell:(UITableViewCell *)cell
 {
     cell.textLabel.text = [item.when toStringWithFormat:@"MM/dd/YY hh:mm:ss aaa"];
-    cell.detailTextLabel.text = item.reason.text;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i", item.sleepMinutes.value];
 }
 
 -(UITableViewCell *)getCellFor:(UITableView *)table
