@@ -98,6 +98,8 @@ static HVTypeSystem* s_typeRegistry;
     [s_typeRegistry addClass:[HVAdvanceDirectiveV2 class] forTypeID:[HVAdvanceDirectiveV2 typeID]];
     [s_typeRegistry addClass:[HVCondition class] forTypeID:[HVCondition typeID]];
     [s_typeRegistry addClass:[HVMedication class] forTypeID:[HVMedication typeID]];    
+    [s_typeRegistry addClass:[HVReferral class] forTypeID:[HVReferral typeID]];
+    [s_typeRegistry addClass:[HVSleepSession class] forTypeID:[HVSleepSession typeID]];
     [s_typeRegistry addClass:[HVBloodOxygenSaturation class] forTypeID:[HVBloodOxygenSaturation typeID]];
     [s_typeRegistry addClass:[HVBodyDimension class] forTypeID:[HVBodyDimension typeID]];
     [s_typeRegistry addClass:[HVStatus class] forTypeID:[HVStatus typeID]];

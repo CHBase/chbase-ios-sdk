@@ -84,9 +84,9 @@
 //-------------------------------------------
 -(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVBodyDimension class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVReferral class] callback:^(HVTask *task) 
     {
-        @try {
+@try {
             //
             // Save the collection of items retrieved
             //
@@ -147,19 +147,31 @@
 //
 -(HVItem *)newData
 {
-    HVItem* item = [HVBodyDimension newItem];
+    HVItem* item = [HVReferral newItem];
 
-    item.bodyDimension.when = [[[HVApproxDateTime alloc] initNow] autorelease];
+    item.referral.when = [[[HVDateTime alloc] initNow] autorelease];
 
-    item.bodyDimension.measurementName= [[[HVCodableValue alloc] initWithText:@"height"] autorelease];
-    item.bodyDimension.value =  [[[HVLengthMeasurement alloc] initWithMeters:1.80] autorelease];
+    item.referral.referralType= [[[HVCodableValue alloc] initWithText:@"Consult"] autorelease];
+    item.referral.reason= [[[HVCodableValue alloc] initWithText:@"Consult"] autorelease];
+    item.referral.referredBy =  [[[HVPerson alloc] initWithName:@"By John Doe" andPhone:@"123-456-7890"] autorelease];
+    item.referral.referredTo =  [[[HVPerson alloc] initWithName:@"To That Guy" andPhone:@"123-456-7890"] autorelease];
+    item.referral.task = [[HVTaskCollection alloc] init];
+
+    HVReferralTask *task = [[HVReferralTask alloc]init];
+    task.businessStatus = [[[HVCodableValue alloc] initWithText:@"Business"] autorelease];
+    task.taskReason = [[[HVCodableValue alloc] initWithText:@"Reason"] autorelease];
+    task.owner = [[[HVPerson alloc] initWithName:@"Task Owner" andPhone:@"123-456-7890"] autorelease];
+
+    [item.referral.task addObject:task];
+    [item.referral.task addObject:task];
+    [item.referral.task addObject:task];
     
     return item;
 }
 
 -(void)changeData:(HVItem *)item
 {
-    item.bodyDimension.value.value.value = item.bodyDimension.value.value.value+.01;
+    item.referral.when = [[[HVDateTime alloc] initNow] autorelease];
 }
 
 -(void)getDataForLastNDays:(int)numDays
@@ -167,7 +179,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVBodyDimension class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVReferral class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -230,7 +242,7 @@
 {
     NSInteger itemIndex = indexPath.row;
 
-    HVBodyDimension* item = [m_items itemAtIndex:itemIndex].bodyDimension;
+    HVReferral* item = [m_items itemAtIndex:itemIndex].referral;
     //
     // Display it in the table cell for the current row
     //
@@ -240,10 +252,10 @@
     return cell;
 }
 
--(void)displayData:(HVBodyDimension *)item inCell:(UITableViewCell *)cell
+-(void)displayData:(HVReferral *)item inCell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = [item.when toStringWithFormat:@"MM/dd/YY hh:mm aaa"];
-    cell.detailTextLabel.text = [item.value.value toString];
+    cell.textLabel.text = [item.when toStringWithFormat:@"MM/dd/YY hh:mm:ss aaa"];
+    cell.detailTextLabel.text = item.reason.text;
 }
 
 -(UITableViewCell *)getCellFor:(UITableView *)table

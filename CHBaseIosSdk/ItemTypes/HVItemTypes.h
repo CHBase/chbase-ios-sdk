@@ -8,6 +8,8 @@
 #import "HVBloodPressure.h"
 #import "HVCholesterol.h"
 #import "HVCholesterolV2.h"
+#import "HVReferral.h"
+#import "HVSleepSession.h"
 #import "HVBloodOxygenSaturation.h"
 #import "HVBodyDimension.h"
 #import "HVStatus.h"
@@ -96,7 +98,9 @@
 -(HVCCD *) ccd;
 -(HVCCR *) ccr;
 -(HVInsurance *) insurance;
+-(HVReferral *) referral;
 -(HVMessage *) message;
+-(HVSleepSession *) sleepSession;
 -(HVLabTestResults *) labResults;
 -(HVBloodOxygenSaturation *) bloodOxygenSaturation;
 

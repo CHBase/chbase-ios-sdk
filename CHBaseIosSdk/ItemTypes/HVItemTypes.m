@@ -98,6 +98,10 @@ HVDECLARE_GETTOR(HVVitalSigns, vitalSigns);
 
 HVDECLARE_GETTOR(HVEncounter, encounter);
 
+HVDECLARE_GETTOR(HVReferral, referral);
+
+HVDECLARE_GETTOR(HVSleepSession, sleepSession);
+
 HVDECLARE_GETTOR(HVBloodOxygenSaturation, bloodOxygenSaturation);
 
 HVDECLARE_GETTOR(HVBodyDimension, bodyDimension);
