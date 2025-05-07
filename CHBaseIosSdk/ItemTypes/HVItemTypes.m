@@ -98,6 +98,18 @@ HVDECLARE_GETTOR(HVVitalSigns, vitalSigns);
 
 HVDECLARE_GETTOR(HVEncounter, encounter);
 
+HVDECLARE_GETTOR(HVAppSpecificInformation, appSpecificInformation);
+
+HVDECLARE_GETTOR(HVMedicationFill, medicationFill);
+
+HVDECLARE_GETTOR(HVAsthmaInhaler, asthmaInhaler);
+
+HVDECLARE_GETTOR(HVAsthmaInhalerUsage, asthmaInhalerUsage);
+
+HVDECLARE_GETTOR(HVInsulinInjectionUsage, insulinInjectionUsage);
+
+HVDECLARE_GETTOR(HVInsulinInjection, insulinInjection);
+
 HVDECLARE_GETTOR(HVReferral, referral);
 
 HVDECLARE_GETTOR(HVSleepSession, sleepSession);

@@ -84,7 +84,7 @@
 //-------------------------------------------
 -(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVSleepSession class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVMedicationFill class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -147,47 +147,28 @@
 //
 -(HVItem *)newData
 {
-    HVItem* item = [HVSleepSession newItem];
+    HVItem* item = [HVMedicationFill newItem];
 
-    item.sleepSession.when = [[[HVDateTime alloc] initNow] autorelease];
+    item.medicationFill.name = [[[HVCodableValue alloc] initWithText:@"paracetamol"] autorelease];
 
-    item.sleepSession.bedTime= [[[HVTime alloc] initWithHour:2 minute:30] autorelease];
-    item.sleepSession.wakeTime= [[[HVTime alloc] initWithHour:4 minute:30] autorelease];
-    item.sleepSession.sleepMinutes= [[[HVNonNegativeInt alloc] initWith:120] autorelease];
-    item.sleepSession.wakeState =  [[[HVNonNegativeInt alloc] initWith:3] autorelease];
+    item.medicationFill.dateFilled = [[[HVApproxDateTime alloc] initNow] autorelease];
+    item.medicationFill.daysSupply = [[[HVPositiveInt alloc] initWith:10] autorelease];
 
-
-    item.sleepSession.level = [[HVLevelCollection alloc] init];
+    item.medicationFill.nextRefillDate= [[[HVDate alloc] initNow] autorelease];
+    item.medicationFill.refillsLeft=  [[[HVNonNegativeInt alloc] initWith:10] autorelease];
+    item.medicationFill.pharmacy=  [[[HVOrganization alloc] init] autorelease];
+    item.medicationFill.pharmacy.name = @"NHS";
     
-
-    HVLevel *level = [[HVLevel alloc]init];
-    level.startTime = [[[HVTime alloc] initWithHour:2 minute:30] autorelease];
-    level.minutes = [[[HVNonNegativeInt alloc] initWith:120] autorelease];
-    level.state = [[[HVCodableValue alloc] initWithText:@"Superb"] autorelease];
-
-    [item.sleepSession.level addObject:level];
-    [item.sleepSession.level addObject:level];
-    [item.sleepSession.level addObject:level];
+    item.medicationFill.prescriptionNumber=  @"1234";
+    item.medicationFill.lotNumber=  @"1234";
 
 
-    item.sleepSession.awakening = [[HVAwakeningCollection alloc] init];
-    
-
-    HVAwakening *awakening = [[HVAwakening alloc]init];
-    awakening.when = [[[HVTime alloc] initWithHour:4 minute:30] autorelease];
-    awakening.minutes = [[[HVNonNegativeInt alloc] initWith:120] autorelease];
-
-
-    [item.sleepSession.awakening addObject:awakening];
-    [item.sleepSession.awakening addObject:awakening];
-    [item.sleepSession.awakening addObject:awakening];
-    
     return item;
 }
 
 -(void)changeData:(HVItem *)item
 {
-    item.sleepSession.when = [[[HVDateTime alloc] initNow] autorelease];
+    item.medicationFill.prescriptionNumber=  @"1234-1";
 }
 
 -(void)getDataForLastNDays:(int)numDays
@@ -195,7 +176,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVSleepSession class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVMedicationFill  class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -258,7 +239,7 @@
 {
     NSInteger itemIndex = indexPath.row;
 
-    HVSleepSession* item = [m_items itemAtIndex:itemIndex].sleepSession;
+    HVMedicationFill * item = [m_items itemAtIndex:itemIndex].medicationFill ;
     //
     // Display it in the table cell for the current row
     //
@@ -268,10 +249,10 @@
     return cell;
 }
 
--(void)displayData:(HVSleepSession *)item inCell:(UITableViewCell *)cell
+-(void)displayData:(HVMedicationFill  *)item inCell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = [item.when toStringWithFormat:@"MM/dd/YY hh:mm:ss aaa"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i", item.sleepMinutes.value];
+    cell.textLabel.text = item.name.text;
+    cell.detailTextLabel.text = [item.dateFilled toString];
 }
 
 -(UITableViewCell *)getCellFor:(UITableView *)table

@@ -8,6 +8,12 @@
 #import "HVBloodPressure.h"
 #import "HVCholesterol.h"
 #import "HVCholesterolV2.h"
+#import "HVAppSpecificInformation.h"
+#import "HVMedicationFill.h"
+#import "HVAsthmaInhaler.h"
+#import "HVAsthmaInhalerUsage.h"
+#import "HVInsulinInjectionUsage.h"
+#import "HVInsulinInjection.h"
 #import "HVReferral.h"
 #import "HVSleepSession.h"
 #import "HVBloodOxygenSaturation.h"
@@ -92,11 +98,17 @@
 -(HVImmunization *) immunization;
 -(HVMedication *) medication;
 -(HVProcedure *) procedure;
+-(HVAppSpecificInformation *) appSpecificInformation;
 -(HVVitalSigns *) vitalSigns;
+-(HVMedicationFill *) medicationFill;
 -(HVEncounter *) encounter;
+-(HVAsthmaInhaler *) asthmaInhaler;
 -(HVFamilyHistory *) familyHistory;
+-(HVAsthmaInhalerUsage *) asthmaInhalerUsage;
 -(HVCCD *) ccd;
+-(HVInsulinInjectionUsage *) insulinInjectionUsage;
 -(HVCCR *) ccr;
+-(HVInsulinInjection *) insulinInjection;
 -(HVInsurance *) insurance;
 -(HVReferral *) referral;
 -(HVMessage *) message;
