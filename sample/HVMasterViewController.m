@@ -151,7 +151,7 @@
     item.asthmaInhalerUsage.when = [[[HVDateTime alloc] initNow] autorelease];
     item.asthmaInhalerUsage.drug = [[[HVCodableValue alloc] initWithText:@"Analoga"] autorelease];
     item.asthmaInhalerUsage.strength = [[[HVCodableValue alloc] initWithText:@"Very strong"] autorelease];
-    item.asthmaInhalerUsage.doseCount = [[ [HVPositiveInt alloc]initWith:2]autorelease];
+    item.asthmaInhalerUsage.doseCount = [[ [HVNonNegativeInt alloc]initWith:2]autorelease];
     item.asthmaInhalerUsage.dosePurpose = [[[HVCodableValue alloc] initWithText:@"asthma"] autorelease];
     item.asthmaInhalerUsage.deviceId=@"12344";
     return item;
