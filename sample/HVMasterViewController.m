@@ -84,7 +84,7 @@
 //-------------------------------------------
 -(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVInsulinInjection class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVInsulinInjectionUsage  class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -147,27 +147,29 @@
 //
 -(HVItem *)newData
 {
-    HVItem* item = [HVInsulinInjection newItem];
-
-    item.insulinInjection.insulinType = [[[HVCodableValue alloc] initWithText:@"Analoga"] autorelease];
-    item.insulinInjection.amount=[[[HVInsulinInjectionValue alloc]init]autorelease];
-    item.insulinInjection.amount.ie =[[ [HVPositiveDouble alloc]initWith:0.30]autorelease];
-    item.insulinInjection.deviceId=@"12344";
+    HVItem* item = [HVInsulinInjectionUsage  newItem];
+    item.insulinInjectionUsage.when = [[[HVDateTime alloc] initNow] autorelease];
+    item.insulinInjectionUsage.insulinType = [[[HVCodableValue alloc] initWithText:@"Analoga"] autorelease];
+    item.insulinInjectionUsage.amount=[[[HVInsulinInjectionValue alloc]init]autorelease];
+    item.insulinInjectionUsage.amount.ie =[[ [HVPositiveDouble alloc]initWith:0.30]autorelease];
+    item.insulinInjectionUsage.deviceId=@"12344";
     return item;
 }
 
 
 -(void)changeData:(HVItem *)item
 {
-    item.insulinInjection.insulinType = [[[HVCodableValue alloc] initWithText:@"type updated"] autorelease];
+    item.insulinInjectionUsage.amount.ie =[[ [HVPositiveDouble alloc]initWith:0.35]autorelease];
+    item.insulinInjectionUsage.insulinType = [[[HVCodableValue alloc] initWithText:@"type updated"] autorelease];
 }
+
 
 -(void)getDataForLastNDays:(int)numDays
 {
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVInsulinInjection  class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVInsulinInjectionUsage   class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -230,7 +232,7 @@
 {
     NSInteger itemIndex = indexPath.row;
 
-    HVInsulinInjection * item = [m_items itemAtIndex:itemIndex].insulinInjection;
+    HVInsulinInjectionUsage  * item = [m_items itemAtIndex:itemIndex].insulinInjectionUsage;
     //
     // Display it in the table cell for the current row
     //
@@ -240,9 +242,9 @@
     return cell;
 }
 
--(void)displayData:(HVInsulinInjection  *)item inCell:(UITableViewCell *)cell
+-(void)displayData:(HVInsulinInjectionUsage   *)item inCell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = item.insulinType.text;
+    cell.textLabel.text = [item.when toStringWithFormat:@"MM/dd/YY hh:mm aaa"];
     cell.detailTextLabel.text =[NSString stringWithFormat:@"%.20lf",item.amount.ie.value] ;
 }
 

@@ -12,7 +12,7 @@
 }
 
 @property (readwrite, nonatomic, retain) HVDateTime* when;
-@property (readwrite, nonatomic, retain) HVCodableValue* type;
+@property (readwrite, nonatomic, retain) HVCodableValue* insulinType;
 @property (readwrite, nonatomic, retain) HVInsulinInjectionValue* amount;
 @property (readwrite, nonatomic, retain) NSString* deviceId;
 

@@ -12,7 +12,7 @@ static NSString* const c_element_deviceId = @"device-id";
 
 @implementation HVInsulinInjectionUsage
 @synthesize when = m_when;
-@synthesize type = m_type;
+@synthesize insulinType = m_type;
 @synthesize amount = m_amount;
 @synthesize deviceId = m_deviceId;
 
