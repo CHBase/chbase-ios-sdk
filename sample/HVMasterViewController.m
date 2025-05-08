@@ -84,7 +84,7 @@
 //-------------------------------------------
 -(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVAsthmaInhaler class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVInsulinInjection class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -147,48 +147,19 @@
 //
 -(HVItem *)newData
 {
-    HVItem* item = [HVAsthmaInhaler newItem];
+    HVItem* item = [HVInsulinInjection newItem];
 
-    item.asthmaInhaler.drug = [[[HVCodableValue alloc] initWithText:@"paracetamol"] autorelease];
-    item.asthmaInhaler.strength = [[[HVCodableValue alloc] initWithText:@"44 mcg / puff"] autorelease];
-    item.asthmaInhaler.purpose = @"Combination";
-    item.asthmaInhaler.startDate = [[[HVApproxDateTime alloc] initNow] autorelease];
-    item.asthmaInhaler.stopDate = [[[HVApproxDateTime alloc] initNow] autorelease];
-    item.asthmaInhaler.expirationDate = [[[HVApproxDateTime alloc] initNow] autorelease];
-    item.asthmaInhaler.deviceId =@"12312";
-    item.asthmaInhaler.initialDoses = [[[HVNonNegativeInt alloc]initWith:1]autorelease];
-    item.asthmaInhaler.minDailyDoses = [[[HVNonNegativeInt alloc]initWith:1]autorelease];
-    item.asthmaInhaler.maxDailyDoses = [[[HVNonNegativeInt alloc]initWith:1]autorelease];
-    item.asthmaInhaler.canAlert = [[[HVBool alloc]initWith:YES]autorelease];
-    item.asthmaInhaler.alert =  [[[HVAlertCollection alloc] init] autorelease];
-
-    item.asthmaInhaler.alert =  [[[HVAlertCollection alloc]init]autorelease];
-    
-    HVAlert *alert =[[[HVAlert alloc] init]autorelease];
-    
-    alert.dow=[[[HVNonNegativeIntCollection alloc]init]autorelease];
-    
-    HVNonNegativeInt *dow = [[[HVNonNegativeInt alloc]initWith:1]autorelease];
-    [alert.dow addItem:dow];
-    [alert.dow addItem:dow];
-    [alert.dow addItem:dow];
-    
-    alert.time = [[[HVTimeCollection alloc] init] autorelease];
-    
-    HVTime *time = [[[HVTime alloc] initWithHour:1 minute:20]autorelease];
-    [alert.time addObject:time];
-
-    [item.asthmaInhaler.alert addItem:alert];
-    [item.asthmaInhaler.alert addItem:alert];
-    [item.asthmaInhaler.alert addItem:alert];
-
+    item.insulinInjection.insulinType = [[[HVCodableValue alloc] initWithText:@"Analoga"] autorelease];
+    item.insulinInjection.amount=[[[HVInsulinInjectionValue alloc]init]autorelease];
+    item.insulinInjection.amount.ie =[[ [HVPositiveDouble alloc]initWith:0.30]autorelease];
+    item.insulinInjection.deviceId=@"12344";
     return item;
 }
 
 
 -(void)changeData:(HVItem *)item
 {
-    item.asthmaInhaler.drug = [[[HVCodableValue alloc] initWithText:@"paracetamol updated"] autorelease];
+    item.insulinInjection.insulinType = [[[HVCodableValue alloc] initWithText:@"type updated"] autorelease];
 }
 
 -(void)getDataForLastNDays:(int)numDays
@@ -196,7 +167,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVAsthmaInhaler  class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVInsulinInjection  class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -259,7 +230,7 @@
 {
     NSInteger itemIndex = indexPath.row;
 
-    HVAsthmaInhaler * item = [m_items itemAtIndex:itemIndex].asthmaInhaler;
+    HVInsulinInjection * item = [m_items itemAtIndex:itemIndex].insulinInjection;
     //
     // Display it in the table cell for the current row
     //
@@ -269,10 +240,10 @@
     return cell;
 }
 
--(void)displayData:(HVAsthmaInhaler  *)item inCell:(UITableViewCell *)cell
+-(void)displayData:(HVInsulinInjection  *)item inCell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = item.drug.text;
-    cell.detailTextLabel.text = [item.startDate toString];
+    cell.textLabel.text = item.insulinType.text;
+    cell.detailTextLabel.text =[NSString stringWithFormat:@"%.20lf",item.amount.ie.value] ;
 }
 
 -(UITableViewCell *)getCellFor:(UITableView *)table

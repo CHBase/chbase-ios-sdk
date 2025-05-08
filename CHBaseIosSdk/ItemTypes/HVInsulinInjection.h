@@ -1,16 +1,16 @@
 #import <Foundation/Foundation.h>
 #import "HVTypes.h"
-
+#import "HVInsulinInjectionValue.h"
 @interface HVInsulinInjection : HVItemDataTyped
 {
 @private
     HVCodableValue* m_type;
-    HVInsulinInjection* m_amount;
+    HVInsulinInjectionValue* m_amount;
     NSString* m_deviceId;
 }
 
-@property (readwrite, nonatomic, retain) HVCodableValue* type;
-@property (readwrite, nonatomic, retain) HVInsulinInjection* amount;
+@property (readwrite, nonatomic, retain) HVCodableValue* insulinType;
+@property (readwrite, nonatomic, retain) HVInsulinInjectionValue* amount;
 @property (readwrite, nonatomic, retain) NSString* deviceId;
 
 +(NSString *) typeID;

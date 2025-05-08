@@ -10,7 +10,7 @@ static NSString* const c_element_amount = @"amount";
 static NSString* const c_element_deviceId = @"device-id";
 
 @implementation HVInsulinInjection
-@synthesize type = m_type;
+@synthesize insulinType = m_type;
 @synthesize amount = m_amount;
 @synthesize deviceId = m_deviceId;
 
@@ -40,7 +40,7 @@ LError:
 -(void)deserialize:(XReader *)reader
 {
     HVDESERIALIZE(m_type, c_element_type, HVCodableValue);
-    HVDESERIALIZE(m_amount, c_element_amount, HVInsulinInjection);
+    HVDESERIALIZE(m_amount, c_element_amount, HVInsulinInjectionValue);
     HVDESERIALIZE_STRING(m_deviceId, c_element_deviceId);
 }
 
