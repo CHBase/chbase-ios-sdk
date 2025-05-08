@@ -84,7 +84,7 @@
 //-------------------------------------------
 -(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVInsulinInjectionUsage  class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVAsthmaInhalerUsage  class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -147,20 +147,20 @@
 //
 -(HVItem *)newData
 {
-    HVItem* item = [HVInsulinInjectionUsage  newItem];
-    item.insulinInjectionUsage.when = [[[HVDateTime alloc] initNow] autorelease];
-    item.insulinInjectionUsage.insulinType = [[[HVCodableValue alloc] initWithText:@"Analoga"] autorelease];
-    item.insulinInjectionUsage.amount=[[[HVInsulinInjectionValue alloc]init]autorelease];
-    item.insulinInjectionUsage.amount.ie =[[ [HVPositiveDouble alloc]initWith:0.30]autorelease];
-    item.insulinInjectionUsage.deviceId=@"12344";
+    HVItem* item = [HVAsthmaInhalerUsage  newItem];
+    item.asthmaInhalerUsage.when = [[[HVDateTime alloc] initNow] autorelease];
+    item.asthmaInhalerUsage.drug = [[[HVCodableValue alloc] initWithText:@"Analoga"] autorelease];
+    item.asthmaInhalerUsage.strength = [[[HVCodableValue alloc] initWithText:@"Very strong"] autorelease];
+    item.asthmaInhalerUsage.doseCount = [[ [HVNonNegativeInt alloc]initWith:2]autorelease];
+    item.asthmaInhalerUsage.dosePurpose = [[[HVCodableValue alloc] initWithText:@"asthma"] autorelease];
+    item.asthmaInhalerUsage.deviceId=@"12344";
     return item;
 }
 
 
 -(void)changeData:(HVItem *)item
 {
-    item.insulinInjectionUsage.amount.ie =[[ [HVPositiveDouble alloc]initWith:0.35]autorelease];
-    item.insulinInjectionUsage.insulinType = [[[HVCodableValue alloc] initWithText:@"type updated"] autorelease];
+    item.asthmaInhalerUsage.when = [[[HVDateTime alloc] initNow] autorelease];
 }
 
 
@@ -169,7 +169,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVInsulinInjectionUsage   class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVAsthmaInhalerUsage   class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -232,7 +232,7 @@
 {
     NSInteger itemIndex = indexPath.row;
 
-    HVInsulinInjectionUsage  * item = [m_items itemAtIndex:itemIndex].insulinInjectionUsage;
+    HVAsthmaInhalerUsage  * item = [m_items itemAtIndex:itemIndex].asthmaInhalerUsage;
     //
     // Display it in the table cell for the current row
     //
@@ -242,10 +242,10 @@
     return cell;
 }
 
--(void)displayData:(HVInsulinInjectionUsage   *)item inCell:(UITableViewCell *)cell
+-(void)displayData:(HVAsthmaInhalerUsage   *)item inCell:(UITableViewCell *)cell
 {
     cell.textLabel.text = [item.when toStringWithFormat:@"MM/dd/YY hh:mm aaa"];
-    cell.detailTextLabel.text =[NSString stringWithFormat:@"%.20lf",item.amount.ie.value] ;
+    cell.detailTextLabel.text =item.drug.text;
 }
 
 -(UITableViewCell *)getCellFor:(UITableView *)table
