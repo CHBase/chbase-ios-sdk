@@ -86,8 +86,8 @@ LError:
     HVDESERIALIZE(m_initialDoses, c_element_initialDoses, HVNonNegativeInt);
     HVDESERIALIZE(m_minDailyDoses, c_element_minDailyDoses, HVNonNegativeInt);
     HVDESERIALIZE(m_maxDailyDoses, c_element_maxDailyDoses, HVNonNegativeInt);
-    HVDESERIALIZE_BOOL(m_canAlert, c_element_canAlert);
-    HVDESERIALIZE_ARRAY(m_alert, x_element_alert, HVAlert);
+    HVDESERIALIZE(m_canAlert, c_element_canAlert, HVBool);
+    HVDESERIALIZE_TYPEDARRAY(m_alert, c_element_alert, HVAlert, HVAlertCollection);
 }
 
 +(NSString *)typeID

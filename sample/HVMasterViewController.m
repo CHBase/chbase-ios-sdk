@@ -84,7 +84,7 @@
 //-------------------------------------------
 -(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVMedicationFill class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVAsthmaInhaler class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -147,28 +147,48 @@
 //
 -(HVItem *)newData
 {
-    HVItem* item = [HVMedicationFill newItem];
+    HVItem* item = [HVAsthmaInhaler newItem];
 
-    item.medicationFill.name = [[[HVCodableValue alloc] initWithText:@"paracetamol"] autorelease];
+    item.asthmaInhaler.drug = [[[HVCodableValue alloc] initWithText:@"paracetamol"] autorelease];
+    item.asthmaInhaler.strength = [[[HVCodableValue alloc] initWithText:@"44 mcg / puff"] autorelease];
+    item.asthmaInhaler.purpose = @"Combination";
+    item.asthmaInhaler.startDate = [[[HVApproxDateTime alloc] initNow] autorelease];
+    item.asthmaInhaler.stopDate = [[[HVApproxDateTime alloc] initNow] autorelease];
+    item.asthmaInhaler.expirationDate = [[[HVApproxDateTime alloc] initNow] autorelease];
+    item.asthmaInhaler.deviceId =@"12312";
+    item.asthmaInhaler.initialDoses = [[[HVNonNegativeInt alloc]initWith:1]autorelease];
+    item.asthmaInhaler.minDailyDoses = [[[HVNonNegativeInt alloc]initWith:1]autorelease];
+    item.asthmaInhaler.maxDailyDoses = [[[HVNonNegativeInt alloc]initWith:1]autorelease];
+    item.asthmaInhaler.canAlert = [[[HVBool alloc]initWith:YES]autorelease];
+    item.asthmaInhaler.alert =  [[[HVAlertCollection alloc] init] autorelease];
 
-    item.medicationFill.dateFilled = [[[HVApproxDateTime alloc] initNow] autorelease];
-    item.medicationFill.daysSupply = [[[HVPositiveInt alloc] initWith:10] autorelease];
-
-    item.medicationFill.nextRefillDate= [[[HVDate alloc] initNow] autorelease];
-    item.medicationFill.refillsLeft=  [[[HVNonNegativeInt alloc] initWith:10] autorelease];
-    item.medicationFill.pharmacy=  [[[HVOrganization alloc] init] autorelease];
-    item.medicationFill.pharmacy.name = @"NHS";
+    item.asthmaInhaler.alert =  [[[HVAlertCollection alloc]init]autorelease];
     
-    item.medicationFill.prescriptionNumber=  @"1234";
-    item.medicationFill.lotNumber=  @"1234";
+    HVAlert *alert =[[[HVAlert alloc] init]autorelease];
+    
+    alert.dow=[[[HVNonNegativeIntCollection alloc]init]autorelease];
+    
+    HVNonNegativeInt *dow = [[[HVNonNegativeInt alloc]initWith:1]autorelease];
+    [alert.dow addItem:dow];
+    [alert.dow addItem:dow];
+    [alert.dow addItem:dow];
+    
+    alert.time = [[[HVTimeCollection alloc] init] autorelease];
+    
+    HVTime *time = [[[HVTime alloc] initWithHour:1 minute:20]autorelease];
+    [alert.time addObject:time];
 
+    [item.asthmaInhaler.alert addItem:alert];
+    [item.asthmaInhaler.alert addItem:alert];
+    [item.asthmaInhaler.alert addItem:alert];
 
     return item;
 }
 
+
 -(void)changeData:(HVItem *)item
 {
-    item.medicationFill.prescriptionNumber=  @"1234-1";
+    item.asthmaInhaler.drug = [[[HVCodableValue alloc] initWithText:@"paracetamol updated"] autorelease];
 }
 
 -(void)getDataForLastNDays:(int)numDays
@@ -176,7 +196,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVMedicationFill  class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVAsthmaInhaler  class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -239,7 +259,7 @@
 {
     NSInteger itemIndex = indexPath.row;
 
-    HVMedicationFill * item = [m_items itemAtIndex:itemIndex].medicationFill ;
+    HVAsthmaInhaler * item = [m_items itemAtIndex:itemIndex].asthmaInhaler;
     //
     // Display it in the table cell for the current row
     //
@@ -249,10 +269,10 @@
     return cell;
 }
 
--(void)displayData:(HVMedicationFill  *)item inCell:(UITableViewCell *)cell
+-(void)displayData:(HVAsthmaInhaler  *)item inCell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = item.name.text;
-    cell.detailTextLabel.text = [item.dateFilled toString];
+    cell.textLabel.text = item.drug.text;
+    cell.detailTextLabel.text = [item.startDate toString];
 }
 
 -(UITableViewCell *)getCellFor:(UITableView *)table

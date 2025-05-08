@@ -4,6 +4,7 @@
 
 static NSString* const c_element_dow = @"dow";
 static NSString* const c_element_time = @"time";
+static const xmlChar* x_element_dow = XMLSTRINGCONST("dow");
 
 @implementation HVAlert
 @synthesize dow = m_dow;
@@ -26,14 +27,14 @@ LError:
 
 -(void)serialize:(XWriter *)writer
 {
-    HVSERIALIZE(m_dow, c_element_dow);
-    HVSERIALIZE(m_time, c_element_time);
+    HVSERIALIZE_ARRAY(m_dow, c_element_dow);
+    HVSERIALIZE_ARRAY(m_time, c_element_time);
 }
 
 -(void)deserialize:(XReader *)reader
 {
-    HVDESERIALIZE(m_dow, c_element_dow, HVNonNegativeInt);
-    HVDESERIALIZE(m_time, c_element_time, HVTime);
+    HVDESERIALIZE_TYPEDARRAY(m_dow, c_element_dow, HVNonNegativeInt, HVNonNegativeIntCollection);
+    HVDESERIALIZE_TYPEDARRAY(m_time, c_element_time, HVTime,HVTimeCollection);
 }
 
 

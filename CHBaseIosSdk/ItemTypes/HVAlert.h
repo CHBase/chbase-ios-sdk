@@ -4,16 +4,14 @@
 @interface HVAlert : HVItemDataTyped
 {
 @private
-    HVNonNegativeInt* m_dow;
-    HVTime* m_time;
+    HVNonNegativeIntCollection* m_dow;
+    HVTimeCollection* m_time;
 }
 
-@property (readwrite, nonatomic, retain) HVNonNegativeInt* dow;
-@property (readwrite, nonatomic, retain) HVTime* time;
+@property (readwrite, nonatomic, retain) HVNonNegativeIntCollection* dow;
+@property (readwrite, nonatomic, retain) HVTimeCollection* time;
 
 @end
-
-
 
 @interface HVAlertCollection : HVCollection
 
@@ -21,3 +19,5 @@
 -(HVAlert *) itemAtIndex:(NSUInteger) index;
 
 @end
+
+

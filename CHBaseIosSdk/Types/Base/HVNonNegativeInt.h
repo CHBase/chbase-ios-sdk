@@ -10,3 +10,10 @@
 @interface HVNonNegativeInt : HVConstrainedInt
 
 @end
+
+@interface HVNonNegativeIntCollection : HVCollection
+
+-(void) addItem:(HVNonNegativeInt *) item;
+-(HVNonNegativeInt *) itemAtIndex:(NSUInteger) index;
+
+@end
