@@ -15,6 +15,7 @@ static NSString* const c_element_summary = @"summary";
 @synthesize formatTag = m_formatTag;
 @synthesize when = m_when;
 @synthesize summary = m_summary;
+@synthesize xml = m_xml;
 
 -(void)dealloc
 {
@@ -22,6 +23,7 @@ static NSString* const c_element_summary = @"summary";
     [m_formatTag release];
     [m_when release];
     [m_summary release];
+    [m_xml release];
     [super dealloc];
 }
 
@@ -39,6 +41,7 @@ LError:
     HVSERIALIZE_STRING(m_formatTag, c_element_formatTag);
     HVSERIALIZE(m_when, c_element_when);
     HVSERIALIZE_STRING(m_summary, c_element_summary);
+    HVSERIALIZE_RAW(m_xml);
 }
 
 -(void)deserialize:(XReader *)reader

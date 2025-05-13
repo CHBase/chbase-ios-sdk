@@ -84,7 +84,7 @@
 //-------------------------------------------
 -(void)getDataFromHealthVault
 {
-    [[HVClient current].currentRecord getItemsForClass:[HVAsthmaInhalerUsage  class] callback:^(HVTask *task) 
+    [[HVClient current].currentRecord getItemsForClass:[HVAppSpecificInformation  class] callback:^(HVTask *task) 
     {
         @try {
             //
@@ -147,20 +147,19 @@
 //
 -(HVItem *)newData
 {
-    HVItem* item = [HVAsthmaInhalerUsage  newItem];
-    item.asthmaInhalerUsage.when = [[[HVDateTime alloc] initNow] autorelease];
-    item.asthmaInhalerUsage.drug = [[[HVCodableValue alloc] initWithText:@"Analoga"] autorelease];
-    item.asthmaInhalerUsage.strength = [[[HVCodableValue alloc] initWithText:@"Very strong"] autorelease];
-    item.asthmaInhalerUsage.doseCount = [[ [HVNonNegativeInt alloc]initWith:2]autorelease];
-    item.asthmaInhalerUsage.dosePurpose = [[[HVCodableValue alloc] initWithText:@"asthma"] autorelease];
-    item.asthmaInhalerUsage.deviceId=@"12344";
+    HVItem* item = [HVAppSpecificInformation  newItem];
+    item.appSpecificInformation.formatAppid = @"Some random app id";
+    item.appSpecificInformation.formatTag = @"Some tag";
+    item.appSpecificInformation.when = [[[HVDateTime alloc] initNow] autorelease];
+    item.appSpecificInformation.summary=@"12344";
+    item.appSpecificInformation.xml = @"<a /><b>hello</b><c><d>hello</d></c>";
     return item;
 }
 
 
 -(void)changeData:(HVItem *)item
 {
-    item.asthmaInhalerUsage.when = [[[HVDateTime alloc] initNow] autorelease];
+    item.appSpecificInformation.when = [[[HVDateTime alloc] initNow] autorelease];
 }
 
 
@@ -169,7 +168,7 @@
     //
     // Set up a filter for HealthVault items
     //
-    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVAsthmaInhalerUsage   class]] autorelease];  // Querying for weights
+    HVItemFilter* itemFilter = [[[HVItemFilter alloc] initWithTypeClass:[HVAppSpecificInformation   class]] autorelease];  // Querying for weights
     //
     // We only want weights no older than numDays
     //
@@ -232,7 +231,7 @@
 {
     NSInteger itemIndex = indexPath.row;
 
-    HVAsthmaInhalerUsage  * item = [m_items itemAtIndex:itemIndex].asthmaInhalerUsage;
+    HVAppSpecificInformation  * item = [m_items itemAtIndex:itemIndex].appSpecificInformation;
     //
     // Display it in the table cell for the current row
     //
@@ -242,10 +241,10 @@
     return cell;
 }
 
--(void)displayData:(HVAsthmaInhalerUsage   *)item inCell:(UITableViewCell *)cell
+-(void)displayData:(HVAppSpecificInformation   *)item inCell:(UITableViewCell *)cell
 {
     cell.textLabel.text = [item.when toStringWithFormat:@"MM/dd/YY hh:mm aaa"];
-    cell.detailTextLabel.text =item.drug.text;
+    cell.detailTextLabel.text = item.xml;
 }
 
 -(UITableViewCell *)getCellFor:(UITableView *)table
